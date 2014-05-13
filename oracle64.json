@@ -1,8 +1,8 @@
 {
   "variables": {
-    "provisioner": "provisionerless",
-    "provisioner_version": "",
-    "provisioner_set_path": "",
+    "cm": "nocm",
+    "cm_version": "",
+    "cm_set_path": "",
     "iso_url": "http://mirrors.dotsrc.org/oracle-linux/OL6/U4/x86_64/OracleLinux-R6-U4-Server-x86_64-dvd.iso",
     "iso_checksum": "4ecb72ade0186afe2f95ffc8273fc146e177e2f9"
   },
@@ -55,9 +55,9 @@
   "provisioners": [{
     "type": "shell",
     "environment_vars": [
-      "PROVISIONER={{user `provisioner`}}",
-      "PROVISIONER_VERSION={{user `provisioner_version`}}",
-      "PROVISIONER_SET_PATH={{user `provisioner_set_path`}}"
+      "CM={{user `cm`}}",
+      "CM_VERSION={{user `cm_version`}}",
+      "CM_SET_PATH={{user `cm_set_path`}}"
     ],
     "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
     "scripts": [
@@ -65,15 +65,14 @@
       "script/fix-slow-dns.sh",
       "script/sshd.sh",
       "script/vagrant.sh",
-      "script/vmtools.sh",
-      "script/provisioner.sh",
-      "script/cleanup.sh",
-      "script/zerodisk.sh"
+      "script/vmtool.sh",
+      "script/cmtool.sh",
+      "script/cleanup.sh"
     ]
   }],
   "post-processors": [{
     "type": "vagrant",
     "keep_input_artifact": false,
-    "output": "../../{{.Provider}}/oracle64-{{user `provisioner`}}{{user `provisioner_version`}}.box"
+    "output": "box/{{.Provider}}/oracle64-{{user `cm`}}{{user `cm_version`}}.box"
   }]
 }

@@ -1,9 +1,9 @@
 {
   "variables": {
-    "provisioner": "provisionerless",
-    "provisioner_version": "",
-    "provisioner_set_path": "",
-    "iso_url": "../../iso/V40139-01.iso",
+    "cm": "nocm",
+    "cm_version": "",
+    "cm_set_path": "",
+    "iso_url": "iso/V40139-01.iso",
     "iso_checksum": "1aa0a1246b1a55108abf20aa2bcac00e"
   },
   "builders": [{
@@ -55,9 +55,9 @@
   "provisioners": [{
     "type": "shell",
     "environment_vars": [
-      "PROVISIONER={{user `provisioner`}}",
-      "PROVISIONER_VERSION={{user `provisioner_version`}}",
-      "PROVISIONER_SET_PATH={{user `provisioner_set_path`}}"
+      "CM={{user `cm`}}",
+      "CM_VERSION={{user `cm_version`}}",
+      "CM_SET_PATH={{user `cm_set_path`}}"
     ],
     "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
     "scripts": [
@@ -65,15 +65,14 @@
       "script/fix-slow-dns.sh",
       "script/sshd.sh",
       "script/vagrant.sh",
-      "script/vmtools.sh",
-      "script/provisioner.sh",
-      "script/cleanup.sh",
-      "script/zerodisk.sh"
+      "script/vmtool.sh",
+      "script/cmtool.sh",
+      "script/cleanup.sh"
     ]
   }],
   "post-processors": [{
     "type": "vagrant",
     "keep_input_artifact": false,
-    "output": "../../{{.Provider}}/oracle510-{{user `provisioner`}}{{user `provisioner_version`}}.box"
+    "output": "box/{{.Provider}}/oracle510-{{user `cm`}}{{user `cm_version`}}.box"
   }]
 }
