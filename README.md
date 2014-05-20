@@ -2,8 +2,28 @@
 
 ### Overview
 
-The repository contains templates for Ubuntu that can create Vagrant boxes
-using Packer ([Website](packer.io)) ([Github](http://github.com/mitchellh/packer))
+This repository contains templates for Oracle Enterprise Linux that can create
+Vagrant boxes using Packer.
+
+## Current Boxes
+
+64-bit boxes:
+
+* [box-cutter/oel65](https://vagrantcloud.com/box-cutter/oel65) - Oracle Enterprise Linux 6.5 (64-bit)
+* [box-cutter/oel64](https://vagrantcloud.com/box-cutter/oel64) - Oracle Enterprise Linux 6.4 (64-bit)
+* [box-cutter/oel510](https://vagrantcloud.com/box-cutter/oel510) - Oracle Enterprise Linux 5.10 (64-bit)
+* [box-cutter/oel59](https://vagrantcloud.com/box-cutter/oel59) - Oracle Enterprise Linux 5.9 (64-bit)
+* [box-cutter/oel58](https://vagrantcloud.com/box-cutter/oel58) - Oracle Enterprise Linux 5.8 (64-bit)
+* [box-cutter/oel57](https://vagrantcloud.com/box-cutter/oel57) - Oracle Enterprise Linux 5.7 (64-bit)
+
+32-bit boxes:
+
+* [box-cutter/oel65-i386](https://vagrantcloud.com/box-cutter/oel65-i386) - Oracle Enterprise Linux 6.5 (32-bit)
+* [box-cutter/oel64-i386](https://vagrantcloud.com/box-cutter/oel64-i386) - Oracle Enterprise Linux 6.4 (32-bit)
+* [box-cutter/oel510-i386](https://vagrantcloud.com/box-cutter/oel510-i386) - Oracle Enterprise Linux 5.10 (32-bit)
+* [box-cutter/oel59-i386](https://vagrantcloud.com/box-cutter/oel59-i386) - Oracle Enterprise Linux 5.9 (32-bit)
+* [box-cutter/oel58-i386](https://vagrantcloud.com/box-cutter/oel58-i386) - Oracle Enterprise Linux 5.8 (32-bit)
+* [box-cutter/oel57-i386](https://vagrantcloud.com/box-cutter/oel57-i386) - Oracle Enterprise Linux 5.7 (32-bit)
 
 ## Building the Vagrant boxes
 
@@ -67,18 +87,12 @@ For Oracle Enterprise Linux, the ISO path variables are:
 
 * ORACLE65_X86_64
 * ORACLE64_X86_64
-* ORACLE63_X86_64
-* ORACLE62_X86_64
-* ORACLE61_X86_64
 * ORACLE510_X86_64
 * ORACLE59_X86_64
 * ORACLE58_X86_64
 * ORACLE57_X86_64
 * ORACLE65_I386
 * ORACLE64_I386
-* ORACLE63_I386
-* ORACLE62_I386
-* ORACLE61_I386
 * ORACLE510_I386
 * ORACLE59_I386
 * ORACLE58_I386
