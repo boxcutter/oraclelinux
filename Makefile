@@ -5,18 +5,12 @@ endif
 
 ORACLE65_X86_64 ?= http://mirrors.dotsrc.org/oracle-linux/OL6/U5/x86_64/OracleLinux-R6-U5-Server-x86_64-dvd.iso
 ORACLE64_X86_64 ?= http://mirrors.dotsrc.org/oracle-linux/OL6/U4/x86_64/OracleLinux-R6-U4-Server-x86_64-dvd.iso
-ORACLE63_X86_64 ?= http://mirrors.dotsrc.org/oracle-linux/OL6/U3/x86_64/OracleLinux-R6-U3-Server-x86_64-dvd.iso
-ORACLE62_X86_64 ?= http://mirrors.dotsrc.org/oracle-linux/OL6/U2/x86_64/OracleLinux-R6-U2-Server-x86_64-dvd.iso
-ORACLE61_X86_64 ?= http://mirrors.dotsrc.org/oracle-linux/OL6/U1/x86_64/OracleLinux-R6-U1-Server-x86_64-dvd.iso
 ORACLE510_X86_64 ?= iso/V40139-01.iso
 ORACLE59_X86_64 ?= http://mirrors.dotsrc.org/oracle-linux/EL5/U9/x86_64/Enterprise-R5-U9-Server-x86_64-dvd.iso
 ORACLE58_X86_64 ?= http://mirrors.dotsrc.org/oracle-linux/EL5/U8/x86_64/OracleLinux-R5-U8-Server-x86_64-dvd.iso
 ORACLE57_X86_64 ?= http://mirrors.dotsrc.org/oracle-linux/EL5/U7/x86_64/Enterprise-R5-U7-Server-x86_64-dvd.iso
 ORACLE65_I386 ?= http://mirrors.dotsrc.org/oracle-linux/OL6/U5/i386/OracleLinux-R6-U5-Server-i386-dvd.iso
 ORACLE64_I386 ?= http://mirrors.dotsrc.org/oracle-linux/OL6/U4/i386/OracleLinux-R6-U4-Server-i386-dvd.iso
-ORACLE63_I386 ?= http://mirrors.dotsrc.org/oracle-linux/OL6/U3/i386/OracleLinux-R6-U3-Server-i386-dvd.iso
-ORACLE62_I386 ?= http://mirrors.dotsrc.org/oracle-linux/OL6/U2/i386/OracleLinux-R6-U2-Server-i386-dvd.iso"
-ORACLE61_I386 ?= http://mirrors.dotsrc.org/oracle-linux/OL6/U1/x86/OracleLinux-R6-U1-Server-i386-dvd.iso
 ORACLE510_I386 ?= iso/V40140-01.iso
 ORACLE59_I386 ?= http://mirrors.dotsrc.org/oracle-linux/EL5/U9/i386/Enterprise-R5-U9-Server-i386-dvd.iso
 ORACLE58_I386 ?= http://mirrors.dotsrc.org/oracle-linux/EL5/U8/i386/OracleLinux-R5-U8-Server-i386-dvd.iso
@@ -55,12 +49,35 @@ VIRTUALBOX_OUTPUT := output-virtualbox-iso
 VMWARE_BUILDER := vmware-iso
 VIRTUALBOX_BUILDER := virtualbox-iso
 CURRENT_DIR = $(shell pwd)
+SOURCES := $(wildcard script/*.sh)
 
 .PHONY: all list clean
 
 all: $(BOX_FILES)
 
 test: $(TEST_BOX_FILES)
+
+###############################################################################
+# Target shortcuts
+define SHORTCUT
+
+vmware/$(1): $(VMWARE_BOX_DIR)/$(1)$(BOX_SUFFIX)
+
+test-vmware/$(1): test-$(VMWARE_BOX_DIR)/$(1)$(BOX_SUFFIX)
+
+virtualbox/$(1): $(VIRTUALBOX_BOX_DIR)/$(1)$(BOX_SUFFIX)
+
+test-virtualbox/$(1): test-$(VIRTUALBOX_BOX_DIR)/$(1)$(BOX_SUFFIX)
+
+$(1): vmware/$(1) virtualbox/$(1)
+
+test-$(1): test-vmware/$(1) test-virtualbox/$(1)
+
+endef
+
+SHORTCUT_TARGETS := oracle65 oracle64 oracle510 oracle59 oracle58 oracle57 oracle65-i386 oracle64-i386 oracle510-i386 oracle59-i386 oracle58-i386 oracle57-i386
+$(foreach i,$(SHORTCUT_TARGETS),$(eval $(call SHORTCUT,$(i))))
+###############################################################################
 
 # Generic rule - not used currently
 #$(VMWARE_BOX_DIR)/%$(BOX_SUFFIX): %.json
@@ -69,92 +86,62 @@ test: $(TEST_BOX_FILES)
 #	mkdir -p $(VMWARE_BOX_DIR)
 #	packer build -only=vmware-iso $(PACKER_VARS) $<
 
-$(VMWARE_BOX_DIR)/oracle65$(BOX_SUFFIX): oracle65.json
+$(VMWARE_BOX_DIR)/oracle65$(BOX_SUFFIX): oracle65.json $(SOURCES) http/ks6.cfg
 	rm -rf $(VMWARE_OUTPUT)
 	mkdir -p $(VMWARE_BOX_DIR)
 	packer build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE65_X86_64)" $<
 
-$(VMWARE_BOX_DIR)/oracle64$(BOX_SUFFIX): oracle64.json
+$(VMWARE_BOX_DIR)/oracle64$(BOX_SUFFIX): oracle64.json $(SOURCES) http/ks6.cfg
 	rm -rf $(VMWARE_OUTPUT)
 	mkdir -p $(VMWARE_BOX_DIR)
 	packer build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE64_X86_64)" $<
 
-$(VMWARE_BOX_DIR)/oracle63$(BOX_SUFFIX): oracle63.json
-	rm -rf $(VMWARE_OUTPUT)
-	mkdir -p $(VMWARE_BOX_DIR)
-	packer build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE63_X86_64)" $<
-
-$(VMWARE_BOX_DIR)/oracle62$(BOX_SUFFIX): oracle62.json
-	rm -rf $(VMWARE_OUTPUT)
-	mkdir -p $(VMWARE_BOX_DIR)
-	packer build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE62_X86_64)" $<
-
-$(VMWARE_BOX_DIR)/oracle61$(BOX_SUFFIX): oracle61.json
-	rm -rf $(VMWARE_OUTPUT)
-	mkdir -p $(VMWARE_BOX_DIR)
-	packer build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE61_X86_64)" $<
-
-$(VMWARE_BOX_DIR)/oracle510$(BOX_SUFFIX): oracle510.json
+$(VMWARE_BOX_DIR)/oracle510$(BOX_SUFFIX): oracle510.json $(SOURCES) http/ks6.cfg
 	rm -rf $(VMWARE_OUTPUT)
 	mkdir -p $(VMWARE_BOX_DIR)
 	packer build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE510_X86_64)" $<
 
-$(VMWARE_BOX_DIR)/oracle59$(BOX_SUFFIX): oracle59.json
+$(VMWARE_BOX_DIR)/oracle59$(BOX_SUFFIX): oracle59.json $(SOURCES) http/ks6.cfg
 	rm -rf $(VMWARE_OUTPUT)
 	mkdir -p $(VMWARE_BOX_DIR)
 	packer build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE59_X86_64)" $<
 
-$(VMWARE_BOX_DIR)/oracle58$(BOX_SUFFIX): oracle58.json
+$(VMWARE_BOX_DIR)/oracle58$(BOX_SUFFIX): oracle58.json $(SOURCES) http/ks6.cfg
 	rm -rf $(VMWARE_OUTPUT)
 	mkdir -p $(VMWARE_BOX_DIR)
 	packer build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE58_X86_64)" $<
 
-$(VMWARE_BOX_DIR)/oracle57$(BOX_SUFFIX): oracle57.json
+$(VMWARE_BOX_DIR)/oracle57$(BOX_SUFFIX): oracle57.json $(SOURCES) http/ks6.cfg
 	rm -rf $(VMWARE_OUTPUT)
 	mkdir -p $(VMWARE_BOX_DIR)
 	packer build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE57_X86_64)" $<
 
-$(VMWARE_BOX_DIR)/oracle65-i386$(BOX_SUFFIX): oracle65-i386.json
+$(VMWARE_BOX_DIR)/oracle65-i386$(BOX_SUFFIX): oracle65-i386.json $(SOURCES) http/ks6.cfg
 	rm -rf $(VMWARE_OUTPUT)
 	mkdir -p $(VMWARE_BOX_DIR)
 	packer build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE65_I386)" $<
 
-$(VMWARE_BOX_DIR)/oracle64-i386$(BOX_SUFFIX): oracle64-i386.json
+$(VMWARE_BOX_DIR)/oracle64-i386$(BOX_SUFFIX): oracle64-i386.json $(SOURCES) http/ks6.cfg
 	rm -rf $(VMWARE_OUTPUT)
 	mkdir -p $(VMWARE_BOX_DIR)
 	packer build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE64_I386)" $<
 
-$(VMWARE_BOX_DIR)/oracle63-i386$(BOX_SUFFIX): oracle63-i386.json
-	rm -rf $(VMWARE_OUTPUT)
-	mkdir -p $(VMWARE_BOX_DIR)
-	packer build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE63_I386)" $<
-
-$(VMWARE_BOX_DIR)/oracle62-i386$(BOX_SUFFIX): oracle62-i386.json
-	rm -rf $(VMWARE_OUTPUT)
-	mkdir -p $(VMWARE_BOX_DIR)
-	packer build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE62_I386)" $<
-
-$(VMWARE_BOX_DIR)/oracle61-i386$(BOX_SUFFIX): oracle61-i386.json
-	rm -rf $(VMWARE_OUTPUT)
-	mkdir -p $(VMWARE_BOX_DIR)
-	packer build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE61_I386)" $<
-
-$(VMWARE_BOX_DIR)/oracle510-i386$(BOX_SUFFIX): oracle510-i386.json
+$(VMWARE_BOX_DIR)/oracle510-i386$(BOX_SUFFIX): oracle510-i386.json $(SOURCES) http/ks5.cfg
 	rm -rf $(VMWARE_OUTPUT)
 	mkdir -p $(VMWARE_BOX_DIR)
 	packer build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE510_I386)" $<
 
-$(VMWARE_BOX_DIR)/oracle59-i386$(BOX_SUFFIX): oracle59-i386.json
+$(VMWARE_BOX_DIR)/oracle59-i386$(BOX_SUFFIX): oracle59-i386.json $(SOURCES) http/ks5.cfg
 	rm -rf $(VMWARE_OUTPUT)
 	mkdir -p $(VMWARE_BOX_DIR)
 	packer build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE59_I386)" $<
 
-$(VMWARE_BOX_DIR)/oracle58-i386$(BOX_SUFFIX): oracle58-i386.json
+$(VMWARE_BOX_DIR)/oracle58-i386$(BOX_SUFFIX): oracle58-i386.json $(SOURCES) http/ks5.cfg
 	rm -rf $(VMWARE_OUTPUT)
 	mkdir -p $(VMWARE_BOX_DIR)
 	packer build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE58_I386)" $<
 
-$(VMWARE_BOX_DIR)/oracle57-i386$(BOX_SUFFIX): oracle57-i386.json
+$(VMWARE_BOX_DIR)/oracle57-i386$(BOX_SUFFIX): oracle57-i386.json $(SOURCES) http/ks5.cfg
 	rm -rf $(VMWARE_OUTPUT)
 	mkdir -p $(VMWARE_BOX_DIR)
 	packer build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE57_I386)" $<
@@ -166,99 +153,73 @@ $(VMWARE_BOX_DIR)/oracle57-i386$(BOX_SUFFIX): oracle57-i386.json
 #	mkdir -p $(VIRTUALBOX_BOX_DIR)
 #	packer build -only=virtualbox-iso $(PACKER_VARS) $<
 	
-$(VIRTUALBOX_BOX_DIR)/oracle65$(BOX_SUFFIX): oracle65.json
+$(VIRTUALBOX_BOX_DIR)/oracle65$(BOX_SUFFIX): oracle65.json $(SOURCES) http/ks6.cfg
 	rm -rf $(VIRTUALBOX_OUTPUT)
 	mkdir -p $(VIRTUALBOX_BOX_DIR)
 	packer build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE65_X86_64)" $<
 
-$(VIRTUALBOX_BOX_DIR)/oracle64$(BOX_SUFFIX): oracle64.json
+$(VIRTUALBOX_BOX_DIR)/oracle64$(BOX_SUFFIX): oracle64.json $(SOURCES) http/ks6.cfg
 	rm -rf $(VIRTUALBOX_OUTPUT)
-	mkdir -p $(VIRTUALBOS_BOX_DIR)
+	mkdir -p $(VIRTUALBOX_BOX_DIR)
 	packer build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE64_X86_64)" $<
 
-$(VIRTUALBOX_BOX_DIR)/oracle63$(BOX_SUFFIX): oracle63.json
-	rm -rf $(VIRTUALBOX_OUTPUT)
-	mkdir -p $(VIRTUALBOS_BOX_DIR)
-	packer build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE63_X86_64)" $<
-
-$(VIRTUALBOX_BOX_DIR)/oracle62$(BOX_SUFFIX): oracle62.json
-	rm -rf $(VIRTUALBOX_OUTPUT)
-	mkdir -p $(VIRTUALBOS_BOX_DIR)
-	packer build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE62_X86_64)" $<
-
-$(VIRTUALBOX_BOX_DIR)/oracle61$(BOX_SUFFIX): oracle61.json
-	rm -rf $(VIRTUALBOX_OUTPUT)
-	mkdir -p $(VIRTUALBOS_BOX_DIR)
-	packer build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE61_X86_64)" $<
-
-$(VIRTUALBOX_BOX_DIR)/oracle510$(BOX_SUFFIX): oracle510.json
+$(VIRTUALBOX_BOX_DIR)/oracle510$(BOX_SUFFIX): oracle510.json $(SOURCES) http/ks5.cfg
 	rm -rf $(VIRTUALBOX_OUTPUT)
 	mkdir -p $(VIRTUALBOX_BOX_DIR)
 	packer build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE510_X86_64)" $<
 
-$(VIRTUALBOX_BOX_DIR)/oracle59$(BOX_SUFFIX): oracle59.json
+$(VIRTUALBOX_BOX_DIR)/oracle59$(BOX_SUFFIX): oracle59.json $(SOURCES) http/ks5.cfg
 	rm -rf $(VIRTUALBOX_OUTPUT)
 	mkdir -p $(VIRTUALBOX_BOX_DIR)
 	packer build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE59_X86_64)" $<
 
-$(VIRTUALBOX_BOX_DIR)/oracle58$(BOX_SUFFIX): oracle58.json
+$(VIRTUALBOX_BOX_DIR)/oracle58$(BOX_SUFFIX): oracle58.json $(SOURCES) http/ks5.cfg
 	rm -rf $(VIRTUALBOX_OUTPUT)
 	mkdir -p $(VIRTUALBOX_BOX_DIR)
 	packer build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE58_X86_64)" $<
 
-$(VIRTUALBOX_BOX_DIR)/oracle57$(BOX_SUFFIX): oracle57.json
+$(VIRTUALBOX_BOX_DIR)/oracle57$(BOX_SUFFIX): oracle57.json $(SOURCES) http/ks5.cfg
 	rm -rf $(VIRTUALBOX_OUTPUT)
 	mkdir -p $(VIRTUALBOX_BOX_DIR)
 	packer build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE57_X86_64)" $<
 
-$(VIRTUALBOX_BOX_DIR)/oracle65-i386$(BOX_SUFFIX): oracle65-i386.json
+$(VIRTUALBOX_BOX_DIR)/oracle65-i386$(BOX_SUFFIX): oracle65-i386.json $(SOURCES) http/ks6.cfg
 	rm -rf $(VIRTUALBOX_OUTPUT)
 	mkdir -p $(VIRTUALBOX_BOX_DIR)
 	packer build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE65_I386)" $<
 
-$(VIRTUALBOX_BOX_DIR)/oracle64-i386$(BOX_SUFFIX): oracle64-i386.json
+$(VIRTUALBOX_BOX_DIR)/oracle64-i386$(BOX_SUFFIX): oracle64-i386.json $(SOURCES) http/ks6.cfg
 	rm -rf $(VIRTUALBOX_OUTPUT)
 	mkdir -p $(VIRTUALBOX_BOX_DIR)
 	packer build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE64_I386)" $<
 
-$(VIRTUALBOX_BOX_DIR)/oracle63-i386$(BOX_SUFFIX): oracle63-i386.json
-	rm -rf $(VIRTUALBOX_OUTPUT)
-	mkdir -p $(VIRTUALBOX_BOX_DIR)
-	packer build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE63_I386)" $<
-
-$(VIRTUALBOX_BOX_DIR)/oracle62-i386$(BOX_SUFFIX): oracle62-i386.json
-	rm -rf $(VIRTUALBOX_OUTPUT)
-	mkdir -p $(VIRTUALBOX_BOX_DIR)
-	packer build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE62_I386)" $<
-
-$(VIRTUALBOX_BOX_DIR)/oracle61-i386$(BOX_SUFFIX): oracle61-i386.json
-	rm -rf $(VIRTUALBOX_OUTPUT)
-	mkdir -p $(VIRTUALBOX_BOX_DIR)
-	packer build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE61_I386)" $<
-
-$(VIRTUALBOX_BOX_DIR)/oracle510-i386$(BOX_SUFFIX): oracle510-i386.json
+$(VIRTUALBOX_BOX_DIR)/oracle510-i386$(BOX_SUFFIX): oracle510-i386.json $(SOURCES) http/ks5.cfg
 	rm -rf $(VIRTUALBOX_OUTPUT)
 	mkdir -p $(VIRTUALBOX_BOX_DIR)
 	packer build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE510_I386)" $<
 
-$(VIRTUALBOX_BOX_DIR)/oracle59-i386$(BOX_SUFFIX): oracle59-i386.json
+$(VIRTUALBOX_BOX_DIR)/oracle59-i386$(BOX_SUFFIX): oracle59-i386.json $(SOURCES) http/ks5.cfg
 	rm -rf $(VIRTUALBOX_OUTPUT)
 	mkdir -p $(VIRTUALBOX_BOX_DIR)
 	packer build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE59_I386)" $<
 
-$(VIRTUALBOX_BOX_DIR)/oracle58-i386$(BOX_SUFFIX): oracle58-i386.json
+$(VIRTUALBOX_BOX_DIR)/oracle58-i386$(BOX_SUFFIX): oracle58-i386.json $(SOURCES) http/ks5.cfg
 	rm -rf $(VIRTUALBOX_OUTPUT)
 	mkdir -p $(VIRTUALBOX_BOX_DIR)
 	packer build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE58_I386)" $<
 
-$(VIRTUALBOX_BOX_DIR)/oracle57-i386$(BOX_SUFFIX): oracle57-i386.json
+$(VIRTUALBOX_BOX_DIR)/oracle57-i386$(BOX_SUFFIX): oracle57-i386.json $(SOURCES) http/ks5.cfg
 	rm -rf $(VIRTUALBOX_OUTPUT)
 	mkdir -p $(VIRTUALBOX_BOX_DIR)
 	packer build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE57_I386)" $<
 
 list:
-	@for box_file in $(BOX_FILES) ; do \
-		echo $$box_file ; \
+	@echo "prepend 'vmware/' or 'virtualbox/' to build only one target platform:"
+	@echo "  make vmware/oracle65"
+	@echo ""
+	@echo "Targets:"
+	@for shortcut_target in $(SHORTCUT_TARGETS) ; do \
+		echo $$shortcut_target ; \
 	done ;
 
 clean: clean-builders clean-output clean-packer-cache

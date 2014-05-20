@@ -3,6 +3,7 @@
     "cm": "nocm",
     "cm_version": "",
     "cm_set_path": "",
+    "cleanup_pause": "",
     "iso_url": "http://mirrors.dotsrc.org/oracle-linux/EL5/U7/i386/Enterprise-R5-U7-Server-i386-dvd.iso",
     "iso_checksum": "0800684248e6b36f38a606689e4759f8"
   },
@@ -57,7 +58,8 @@
     "environment_vars": [
       "CM={{user `cm`}}",
       "CM_VERSION={{user `cm_version`}}",
-      "CM_SET_PATH={{user `cm_set_path`}}"
+      "CM_SET_PATH={{user `cm_set_path`}}",
+      "CLEANUP_PAUSE={{user `cleanup_pause`}}"
     ],
     "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
     "scripts": [

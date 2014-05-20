@@ -3,6 +3,7 @@
     "cm": "nocm",
     "cm_version": "",
     "cm_set_path": "",
+    "cleanup_pause": "",
     "iso_url": "http://mirrors.dotsrc.org/oracle-linux/OL6/U5/x86_64/OracleLinux-R6-U5-Server-x86_64-dvd.iso",
     "iso_checksum": "a65041fbe0ba67e3ff6f5f93804a8f47d5b5f132"
   },
@@ -57,7 +58,8 @@
     "environment_vars": [
       "CM={{user `cm`}}",
       "CM_VERSION={{user `cm_version`}}",
-      "CM_SET_PATH={{user `cm_set_path`}}"
+      "CM_SET_PATH={{user `cm_set_path`}}",
+      "CLEANUP_PAUSE={{user `cleanup_pause`}}"
     ],
     "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
     "scripts": [
