@@ -4,7 +4,7 @@
     "cm_version": "",
     "cm_set_path": "",
     "cleanup_pause": "",
-    "iso_url": "iso/V40140-01.iso",
+    "iso_url": "http://mirrors.dotsrc.org/oracle-linux/EL5/U10/i386/Enterprise-R5-U10-Server-i386-dvd.iso",
     "iso_checksum": "5a9216dd69f17b9dd8f64ed539629741"
   },
   "builders": [{
