@@ -4,6 +4,7 @@
     "cm_version": "",
     "cm_set_path": "",
     "cleanup_pause": "",
+    "headless": "",
     "iso_url": "http://mirrors.dotsrc.org/oracle-linux/EL5/U8/i386/OracleLinux-R5-U8-Server-i386-dvd.iso",
     "iso_checksum": "e9f58baa2fc3cbd55e9b484d50071a9d"
   },
@@ -18,6 +19,7 @@
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "ssh_wait_timeout": "10000s",
+    "headless": "{{ user `headless` }}",
     "tools_upload_flavor": "linux",
     "boot_command": [
       "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort}}/ks5.cfg<enter>"
@@ -43,6 +45,7 @@
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "ssh_wait_timeout": "10000s",
+    "headless": "{{ user `headless` }}",
     "boot_command": [
       "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort}}/ks5.cfg<enter>"
     ],

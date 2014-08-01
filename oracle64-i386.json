@@ -4,6 +4,7 @@
     "cm_version": "",
     "cm_set_path": "",
     "cleanup_pause": "",
+    "headless": "",
     "iso_url": "http://mirrors.dotsrc.org/oracle-linux/OL6/U4/i386/OracleLinux-R6-U4-Server-i386-dvd.iso",
     "iso_checksum": "afc350793e129e9dd0049c3fce282ff33cb623a9"
   },
@@ -18,6 +19,7 @@
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "ssh_wait_timeout": "10000s",
+    "headless": "{{ user `headless` }}",
     "tools_upload_flavor": "linux",
     "boot_command": [
       "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort}}/ks6.cfg<enter>"
@@ -43,6 +45,7 @@
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "ssh_wait_timeout": "10000s",
+    "headless": "{{ user `headless` }}",
     "boot_command": [
       "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort}}/ks6.cfg<enter>"
     ],
