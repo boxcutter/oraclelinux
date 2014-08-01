@@ -37,6 +37,18 @@ A GNU Make `Makefile` drives the process via the following targets:
     make test   # Run tests against all the boxes
     make list   # Print out individual targets
     make clean  # Clean up build detritus
+
+### Proxy Settings
+
+The templates respect the following network proxy environment variables
+and forward them on to the virtual machine environment during the box creation
+process, should you be using a proxy:
+
+* http_proxy
+* https_proxy
+* ftp_proxy
+* rsync_proxy
+* no_proxy
     
 ### Tests
 
@@ -69,6 +81,7 @@ used are:
 * CM_VERSION
 * HEADLESS
 * \<iso_path\>
+* UPDATE
 
 `Makefile.local` is most commonly used to override the default configuration
 management tool, for example with Chef:
@@ -93,6 +106,10 @@ such as `CM_VERSION := 11.12.4`
 
 The variable `HEADLESS` can be set to run Packer in headless mode.
 Set `HEADLESS := true`, the default is false.
+
+The variable `UPDATE` can be used to perform OS patch management.  The
+default is to not apply OS updates by default.  When `UPDATE := true`,
+the latest OS updates will be applied.
 
 Another use for `Makefile.local` is to override the default locations
 for the Ubuntu install ISO files.
