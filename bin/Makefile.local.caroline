@@ -1,4 +1,5 @@
 caroline_oel := file:///Volumes/Thunder/oel
+ORACLE70_X86_64 := $(caroline_oel)/V46135-01.iso
 ORACLE65_X86_64 := $(caroline_oel)/OracleLinux-R6-U5-Server-x86_64-dvd.iso
 ORACLE64_X86_64 := $(caroline_oel)/OracleLinux-R6-U4-Server-x86_64-dvd.iso
 ORACLE510_X86_64 := $(caroline_oel)/Enterprise-R5-U10-Server-x86_64-dvd.iso
