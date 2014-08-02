@@ -30,6 +30,8 @@ install_vmware_tools_centos_70()
         popd        
     fi
 
+    umount /mnt/floppy
+    rmdir /mnt/floppy
     /tmp/vmware-tools-distrib/vmware-install.pl --default
     rm /home/vagrant/linux.iso
     umount /mnt/cdrom
