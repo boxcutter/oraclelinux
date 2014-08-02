@@ -10,7 +10,10 @@ Vagrant boxes using Packer.
 
 64-bit boxes:
 
+* [box-cutter/oel70](https://vagrantcloud.com/box-cutter/oel70) - Oracle Enterprise Linux 7.0 (64-bit), VirtualBox 404MB
+* [box-cutter/oel70-desktop](https://vagrantcloud.com/box-cutter/oel70-desktop) - Oracle Enterprise Linux 7.0 Desktop (64-bit), VirtualBox 941MB
 * [box-cutter/oel65](https://vagrantcloud.com/box-cutter/oel65) - Oracle Enterprise Linux 6.5 (64-bit), VMware 544MB/VirtualBox 481MB
+* [box-cutter/oel65-desktop](https://vagrantcloud.com/box-cutter/oel65-desktop) - Oracle Enterprise Linux 6.5 (64-bit), VMware 1.1GB/VirtualBox 1.1GB
 * [box-cutter/oel64](https://vagrantcloud.com/box-cutter/oel64) - Oracle Enterprise Linux 6.4 (64-bit), VMware 479MB/VirtualBox 426MB
 * [box-cutter/oel510](https://vagrantcloud.com/box-cutter/oel510) - Oracle Enterprise Linux 5.10 (64-bit), VMware 274MB/VirtualBox 205MB
 * [box-cutter/oel59](https://vagrantcloud.com/box-cutter/oel59) - Oracle Enterprise Linux 5.9 (64-bit), VMware 270MB/VirtualBox 199MB
@@ -116,6 +119,7 @@ for the Ubuntu install ISO files.
 
 For Oracle Enterprise Linux, the ISO path variables are:
 
+* ORACLE70_X86_64
 * ORACLE65_X86_64
 * ORACLE64_X86_64
 * ORACLE510_X86_64
