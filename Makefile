@@ -75,7 +75,7 @@ test-$(1): test-vmware/$(1) test-virtualbox/$(1)
 
 endef
 
-SHORTCUT_TARGETS := oracle65 oracle65-desktop oracle64 oracle510 oracle59 oracle58 oracle57 oracle65-i386 oracle64-i386 oracle510-i386 oracle59-i386 oracle58-i386 oracle57-i386
+SHORTCUT_TARGETS := oracle70 oracle70-desktop oracle65 oracle65-desktop oracle64 oracle510 oracle59 oracle58 oracle57 oracle65-i386 oracle64-i386 oracle510-i386 oracle59-i386 oracle58-i386 oracle57-i386
 $(foreach i,$(SHORTCUT_TARGETS),$(eval $(call SHORTCUT,$(i))))
 ###############################################################################
 
@@ -85,6 +85,16 @@ $(foreach i,$(SHORTCUT_TARGETS),$(eval $(call SHORTCUT,$(i))))
 #	rm -rf output-vmware-iso
 #	mkdir -p $(VMWARE_BOX_DIR)
 #	packer build -only=vmware-iso $(PACKER_VARS) $<
+
+$(VMWARE_BOX_DIR)/oracle70$(BOX_SUFFIX): oracle70.json $(SOURCES) http/ks7.cfg
+	rm -rf $(VMWARE_OUTPUT)
+	mkdir -p $(VMWARE_BOX_DIR)
+	packer build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE70_X86_64)" $<
+
+$(VMWARE_BOX_DIR)/oracle70-desktop$(BOX_SUFFIX): oracle70-desktop.json $(SOURCES) http/ks7-desktop.cfg
+	rm -rf $(VMWARE_OUTPUT)
+	mkdir -p $(VMWARE_BOX_DIR)
+	packer build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE70_X86_64)" $<
 
 $(VMWARE_BOX_DIR)/oracle65$(BOX_SUFFIX): oracle65.json $(SOURCES) http/ks6.cfg
 	rm -rf $(VMWARE_OUTPUT)
@@ -158,6 +168,16 @@ $(VMWARE_BOX_DIR)/oracle57-i386$(BOX_SUFFIX): oracle57-i386.json $(SOURCES) http
 #	mkdir -p $(VIRTUALBOX_BOX_DIR)
 #	packer build -only=virtualbox-iso $(PACKER_VARS) $<
 	
+$(VIRTUALBOX_BOX_DIR)/oracle70$(BOX_SUFFIX): oracle70.json $(SOURCES) http/ks7.cfg
+	rm -rf $(VIRTUALBOX_OUTPUT)
+	mkdir -p $(VIRTUALBOX_BOX_DIR)
+	packer build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE70_X86_64)" $<
+
+$(VIRTUALBOX_BOX_DIR)/oracle70-desktop$(BOX_SUFFIX): oracle70-desktop.json $(SOURCES) http/ks7-desktop.cfg
+	rm -rf $(VIRTUALBOX_OUTPUT)
+	mkdir -p $(VIRTUALBOX_BOX_DIR)
+	packer build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE70_X86_64)" $<
+
 $(VIRTUALBOX_BOX_DIR)/oracle65$(BOX_SUFFIX): oracle65.json $(SOURCES) http/ks6.cfg
 	rm -rf $(VIRTUALBOX_OUTPUT)
 	mkdir -p $(VIRTUALBOX_BOX_DIR)
