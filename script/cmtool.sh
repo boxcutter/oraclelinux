@@ -28,10 +28,10 @@ install_chef()
     echo "==> Installing Chef"
     if [[ ${CM_VERSION:-} == 'latest' ]]; then
         echo "==> Installing latest Chef version"
-        curl -L https://www.opscode.com/chef/install.sh | sh
+        curl -Lk https://www.opscode.com/chef/install.sh | sh
     else
         echo "==> Installing Chef version ${CM_VERSION}"
-        curl -L https://www.opscode.com/chef/install.sh | sh -s -- -v ${CM_VERSION}
+        curl -Lk https://www.opscode.com/chef/install.sh | sh -s -- -v ${CM_VERSION}
     fi
 }
 
@@ -40,10 +40,10 @@ install_chefdk()
     echo "==> Installing Chef Development Kit"
     if [[ ${CM_VERSION:-} == 'latest' ]]; then
         echo "==> Installing latest Chef version"
-        curl -L https://www.opscode.com/chef/install.sh | sh -s -- -P chefdk
+        curl -Lk https://www.opscode.com/chef/install.sh | sh -s -- -P chefdk
     else
         echo "==> Installing Chef version ${CM_VERSION}"
-        curl -L https://www.opscode.com/chef/install.sh | sh -s -- -P chefdk -v ${CM_VERSION}
+        curl -Lk https://www.opscode.com/chef/install.sh | sh -s -- -P chefdk -v ${CM_VERSION}
     fi
 
     echo "==> Adding Chef Development Kit and Ruby to PATH"
