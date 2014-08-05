@@ -32,14 +32,18 @@ upload-s3-virtualbox:
                 aws s3 cp $$virtualbox_box_file $(VIRTUALBOX_S3_BUCKET) --grants full=$(S3_GRANT_ID) read=$(ALLUSERS_ID) ; \
         done
 
+VAGRANTCLOUD_VIRTUALBOX_TARGETS := oel70 oel70-desktop oel65 oel65-desktop oel64 oel510 oel59 oel58 oel57 oel65-i386 oel64-i386 oel510-i386 oel59-i386 oel58-i386 oel57-i386
+
+VAGRANTCLOUD_VMWARE_TARGETS := oel65 oel65-desktop oel64 oel510 oel59 oel58 oel57 oel65-i386 oel64-i386 oel510-i386 oel59-i386 oel58-i386 oel57-i386
+
 test-vagrantcloud: test-vagrantcloud-vmware test-vagrantcloud-virtualbox
 
 test-vagrantcloud-vmware:
-	@for shortcut_target in $(SHORTCUT_TARGETS) ; do \
+	@for shortcut_target in $(VAGRANTCLOUD_VMWARE_TARGETS) ; do \
 		bin/test-vagrantcloud-box.sh box-cutter/$$shortcut_target vmware_fusion vmware_desktop $(CURRENT_DIR)/test/*_spec.rb || exit; \
 	done
 
 test-vagrantcloud-virtualbox:
-	@for shortcut_target in $(SHORTCUT_TARGETS) ; do \
+	@for shortcut_target in $(VAGRANTCLOUD_VIRTUALBOX_TARGETS) ; do \
 		bin/test-vagrantcloud-box.sh box-cutter/$$shortcut_target virtualbox virtualbox $(CURRENT_DIR)/test/*_spec.rb || exit; \
 	done
