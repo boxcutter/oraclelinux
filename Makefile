@@ -21,12 +21,6 @@ ORACLE59_I386 ?= http://mirrors.dotsrc.org/oracle-linux/EL5/U9/i386/Enterprise-R
 ORACLE58_I386 ?= http://mirrors.dotsrc.org/oracle-linux/EL5/U8/i386/OracleLinux-R5-U8-Server-i386-dvd.iso
 ORACLE57_I386 ?= http://mirrors.dotsrc.org/oracle-linux/EL5/U7/i386/Enterprise-R5-U7-Server-i386-dvd.iso
 
-BOX_VERSION ?= $(shell cat VERSION)
-ifeq ($(CM),nocm)
-	BOX_SUFFIX := -$(CM)-$(BOX_VERSION).box
-else
-	BOX_SUFFIX := -$(CM)$(CM_VERSION)-$(BOX_VERSION).box
-endif
 # Possible values for CM: (nocm | chef | chefdk | salt | puppet)
 CM ?= nocm
 # Possible values for CM_VERSION: (latest | x.y.z | x.y)
@@ -35,6 +29,12 @@ ifndef CM_VERSION
 	ifneq ($(CM),nocm)
 		CM_VERSION = latest
 	endif
+endif
+BOX_VERSION ?= $(shell cat VERSION)
+ifeq ($(CM),nocm)
+	BOX_SUFFIX := -$(CM)-$(BOX_VERSION).box
+else
+	BOX_SUFFIX := -$(CM)$(CM_VERSION)-$(BOX_VERSION).box
 endif
 # Packer does not allow empty variables, so only pass variables that are defined
 ifdef CM_VERSION
