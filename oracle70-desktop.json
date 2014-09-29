@@ -30,7 +30,7 @@
     "tools_upload_flavor": "linux",
     "boot_wait": "20s",
     "boot_command": [
-      "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks7-desktop.cfg<enter>"
+      "<tab><wait> <wait>text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks7-desktop.cfg<enter>"
     ],
     "shutdown_command": "echo 'vagrant'|sudo -S shutdown -P now",
     "disk_size": 40960,
@@ -56,7 +56,7 @@
     "headless": "{{ user `headless` }}",
     "boot_wait": "20s",
     "boot_command": [
-      "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks7-desktop.cfg<enter>"
+      "<tab><wait> <wait>text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks7-desktop.cfg<enter>"
     ],
     "shutdown_command": "echo 'vagrant'|sudo -S shutdown -P now",
     "disk_size": 40960,
