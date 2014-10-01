@@ -8,6 +8,7 @@ ifneq (0.5.0, $(word 1, $(sort 0.5.0 $(PACKER_VERSION))))
 $(error Packer version less than 0.5.x, please upgrade)
 endif
 
+ORACLE70_X86_64 ?= http://mirrors.dotsrc.org/oracle-linux/OL7/u0/x86_64/OracleLinux-R7-U0-Server-x86_64-dvd.iso
 ORACLE65_X86_64 ?= http://mirrors.dotsrc.org/oracle-linux/OL6/U5/x86_64/OracleLinux-R6-U5-Server-x86_64-dvd.iso
 ORACLE64_X86_64 ?= http://mirrors.dotsrc.org/oracle-linux/OL6/U4/x86_64/OracleLinux-R6-U4-Server-x86_64-dvd.iso
 ORACLE511_X86_64 ?= http://mirrors.dotsrc.org/oracle-linux/EL5/U11/x86_64/Enterprise-R5-U11-Server-x86_64-dvd.iso
