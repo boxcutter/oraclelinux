@@ -1,13 +1,15 @@
 winry_oel := file:///Volumes/Storage/software/oel
-ORACLE70_X86_64 := $(winry_oel)/V46135-01.iso
+ORACLE70_X86_64 := $(winry_oel)/OracleLinux-R7-U0-Server-x86_64-dvd.iso
 ORACLE65_X86_64 := $(winry_oel)/OracleLinux-R6-U5-Server-x86_64-dvd.iso
 ORACLE64_X86_64 := $(winry_oel)/OracleLinux-R6-U4-Server-x86_64-dvd.iso
+ORACLE511_X86_64 := $(winry_oel)/Enterprise-R5-U11-Server-x86_64-dvd.iso
 ORACLE510_X86_64 := $(winry_oel)/Enterprise-R5-U10-Server-x86_64-dvd.iso
 ORACLE59_X86_64 := $(winry_oel)/Enterprise-R5-U9-Server-x86_64-dvd.iso
 ORACLE58_X86_64 := $(winry_oel)/OracleLinux-R5-U8-Server-x86_64-dvd.iso
 ORACLE57_X86_64 := $(winry_oel)/Enterprise-R5-U7-Server-x86_64-dvd.iso
 ORACLE65_I386 := $(winry_oel)/OracleLinux-R6-U5-Server-i386-dvd.iso
 ORACLE64_I386 := $(winry_oel)/OracleLinux-R6-U4-Server-i386-dvd.iso
+ORACLE511_I386 := $(winry_oel)/Enterprise-R5-U11-Server-i386-dvd.iso
 ORACLE510_I386 := $(winry_oel)/Enterprise-R5-U10-Server-i386-dvd.iso
 ORACLE59_I386 := $(winry_oel)/Enterprise-R5-U9-Server-i386-dvd.iso
 ORACLE58_I386 := $(winry_oel)/OracleLinux-R5-U8-Server-i386-dvd.iso
@@ -33,9 +35,9 @@ upload-s3-virtualbox:
 		aws s3 cp $$virtualbox_box_file $(VIRTUALBOX_S3_BUCKET) --storage-class REDUCED_REDUNDANCY --grants full=$(S3_GRANT_ID) read=$(ALLUSERS_ID) ; \
 	done
 
-VAGRANTCLOUD_VIRTUALBOX_TARGETS := oel70 oel70-desktop oel65 oel65-desktop oel64 oel510 oel59 oel58 oel57 oel65-i386 oel64-i386 oel510-i386 oel59-i386 oel58-i386 oel57-i386
+VAGRANTCLOUD_VIRTUALBOX_TARGETS := oel70 oel70-desktop oel65 oel65-desktop oel64 oel511 oel510 oel59 oel58 oel57 oel65-i386 oel64-i386 oel511-i386 oel510-i386 oel59-i386 oel58-i386 oel57-i386
 
-VAGRANTCLOUD_VMWARE_TARGETS := oel65 oel65-desktop oel64 oel510 oel59 oel58 oel57 oel65-i386 oel64-i386 oel510-i386 oel59-i386 oel58-i386 oel57-i386
+VAGRANTCLOUD_VMWARE_TARGETS := oel65 oel65-desktop oel64 oel511 oel510 oel59 oel58 oel57 oel65-i386 oel64-i386 oel511-i386 oel510-i386 oel59-i386 oel58-i386 oel57-i386
 
 test-vagrantcloud: test-vagrantcloud-vmware test-vagrantcloud-virtualbox
 
