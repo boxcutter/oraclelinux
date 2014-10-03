@@ -15,6 +15,10 @@ ORACLE59_I386 := $(caroline_oel)/Enterprise-R5-U9-Server-i386-dvd.iso
 ORACLE58_I386 := $(caroline_oel)/OracleLinux-R5-U8-Server-i386-dvd.iso
 ORACLE57_I386 := $(caroline_oel)/Enterprise-R5-U7-Server-i386-dvd.iso
 
+VMWARE_VAGRANTCLOUD_TARGETS := oel65 oel65-desktop oel64 oel511 oel510 oel59 oel58 oel57 oel65-i386 oel64-i386 oel511-i386 oel510-i386 oel59-i386 oel58-i386 oel57-i386
+
+VIRTUALBOX_VAGRANTCLOUD_TARGETS := oel70 oel70-desktop oel65 oel65-desktop oel64 oel511 oel510 oel59 oel58 oel57 oel65-i386 oel64-i386 oel511-i386 oel510-i386 oel59-i386 oel58-i386 oel57-i386
+
 VIRTUALBOX_VERSION := $(shell virtualbox --help | head -n 1 | awk '{print $$NF}')
 VMWARE_BOX_FILES := $(wildcard box/vmware/*.box)
 VIRTUALBOX_BOX_FILES := $(wildcard box/virtualbox/*.box)
@@ -38,11 +42,11 @@ upload-s3-virtualbox:
 test-vagrantcloud: test-vagrantcloud-vmware test-vagrantcloud-virtualbox
 
 test-vagrantcloud-vmware:
-	@for shortcut_target in $(SHORTCUT_TARGETS) ; do \
+	@for shortcut_target in $(VMWARE_VAGRANTCLOUD_TARGETS) ; do \
 		bin/test-vagrantcloud-box.sh box-cutter/$$shortcut_target vmware_fusion vmware_desktop $(CURRENT_DIR)/test/*_spec.rb || exit; \
 	done
 
 test-vagrantcloud-virtualbox:
-	@for shortcut_target in $(SHORTCUT_TARGETS) ; do \
+	@for shortcut_target in $(VIRTUALBOX_VAGRANTCLOUD_TARGETS) ; do \
 		bin/test-vagrantcloud-box.sh box-cutter/$$shortcut_target virtualbox virtualbox $(CURRENT_DIR)/test/*_spec.rb || exit; \
 	done
