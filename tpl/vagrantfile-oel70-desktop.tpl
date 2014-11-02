@@ -2,15 +2,9 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-    config.vm.define "vagrant-oracle70-desktop"
-    config.vm.box = "oracle70-desktop"
+    config.vm.define "vagrant-oel70-desktop"
+    config.vm.box = "oel70-desktop"
  
-    # Berkshelf
-    # config.berkshelf.enabled = true
-  
-    # Shell - Hello World
-    # config.vm.provision :shell, :inline => "C:\\vagrant\\scripts\\HelloWorld.bat"
-  
     config.vm.provider :virtualbox do |v, override|
         v.gui = true
         v.customize ["modifyvm", :id, "--memory", 1024]

@@ -5,8 +5,8 @@
     "cm_version": "",
     "cleanup_pause": "",
     "headless": "",
-    "iso_url": "http://mirrors.dotsrc.org/oracle-linux/EL5/U10/i386/Enterprise-R5-U10-Server-i386-dvd.iso",
-    "iso_checksum": "5a9216dd69f17b9dd8f64ed539629741",
+    "iso_url": "http://mirrors.dotsrc.org/oracle-linux/EL5/U10/x86_64/Enterprise-R5-U10-Server-x86_64-dvd.iso",
+    "iso_checksum": "1aa0a1246b1a55108abf20aa2bcac00e",
     "update": "false",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
@@ -15,9 +15,9 @@
     "no_proxy": "{{env `no_proxy`}}"
   },
   "builders": [{
-    "vm_name": "oracle510-i386",
+    "vm_name": "oel510",
     "type": "vmware-iso",
-    "guest_os_type": "oraclelinux",
+    "guest_os_type": "oraclelinux-64",
     "http_directory": "http",
     "iso_url": "{{ user `iso_url` }}",
     "iso_checksum": "{{ user `iso_checksum` }}",
@@ -39,13 +39,13 @@
     }
   },
   {
-    "vm_name": "oracle510-i386",
+    "vm_name": "oel510",
     "type": "virtualbox-iso",
     "http_directory": "http",
     "iso_url": "{{ user `iso_url` }}",
     "iso_checksum": "{{ user `iso_checksum` }}",
     "iso_checksum_type": "md5",
-    "guest_os_type": "RedHat",
+    "guest_os_type": "RedHat_64",
     "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
     "virtualbox_version_file": ".vbox_version",
     "ssh_username": "vagrant",
@@ -63,7 +63,7 @@
     ]
   },
   {
-    "vm_name": "oracle510-i386",
+    "vm_name": "oel510",
     "type": "parallels-iso",
     "http_directory": "http",
     "iso_url": "{{ user `iso_url` }}",
@@ -71,7 +71,7 @@
     "iso_checksum_type": "md5",
     "parallels_tools_flavor": "lin",
     "guest_os_type": "redhat",
-    "prlctl_version_file": ".prlct_version",
+    "prlctl_version_file": ".prlctl_version",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "ssh_wait_timeout": "10000s",
@@ -113,6 +113,6 @@
   "post-processors": [{
     "type": "vagrant",
     "keep_input_artifact": false,
-    "output": "box/{{.Provider}}/oracle510-i386-{{user `cm`}}{{user `cm_version`}}-{{user `version`}}.box"
+    "output": "box/{{.Provider}}/oel510-{{user `cm`}}{{user `cm_version`}}-{{user `version`}}.box"
   }]
 }

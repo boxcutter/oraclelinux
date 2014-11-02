@@ -5,8 +5,8 @@
     "cm_version": "",
     "cleanup_pause": "",
     "headless": "",
-    "iso_url": "http://mirrors.dotsrc.org/oracle-linux/EL5/U9/i386/Enterprise-R5-U9-Server-i386-dvd.iso",
-    "iso_checksum": "d6207fddf102c053dba05a29ed4770a3",
+    "iso_url": "http://mirrors.dotsrc.org/oracle-linux/EL5/U7/x86_64/Enterprise-R5-U7-Server-x86_64-dvd.iso",
+    "iso_checksum": "04fcd6af234eebda71d8c336db050f42",
     "update": "false",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
@@ -15,9 +15,9 @@
     "no_proxy": "{{env `no_proxy`}}"
   },
   "builders": [{
-    "vm_name": "oracle59-i386",
+    "vm_name": "oel57",
     "type": "vmware-iso",
-    "guest_os_type": "oraclelinux",
+    "guest_os_type": "oraclelinux-64",
     "http_directory": "http",
     "iso_url": "{{ user `iso_url` }}",
     "iso_checksum": "{{ user `iso_checksum` }}",
@@ -39,13 +39,13 @@
     }
   },
   {
-    "vm_name": "oracle59-i386",
+    "vm_name": "oel57",
     "type": "virtualbox-iso",
     "http_directory": "http",
     "iso_url": "{{ user `iso_url` }}",
     "iso_checksum": "{{ user `iso_checksum` }}",
     "iso_checksum_type": "md5",
-    "guest_os_type": "RedHat",
+    "guest_os_type": "RedHat_64",
     "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
     "virtualbox_version_file": ".vbox_version",
     "ssh_username": "vagrant",
@@ -63,7 +63,7 @@
     ]
   },
   {
-    "vm_name": "oracle59-i386",
+    "vm_name": "oel57",
     "type": "parallels-iso",
     "http_directory": "http",
     "iso_url": "{{ user `iso_url` }}",
@@ -113,6 +113,6 @@
   "post-processors": [{
     "type": "vagrant",
     "keep_input_artifact": false,
-    "output": "box/{{.Provider}}/oracle59-i386-{{user `cm`}}{{user `cm_version`}}-{{user `version`}}.box"
+    "output": "box/{{.Provider}}/oel57-{{user `cm`}}{{user `cm_version`}}-{{user `version`}}.box"
   }]
 }

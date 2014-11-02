@@ -15,7 +15,7 @@
     "no_proxy": "{{env `no_proxy`}}"
   },
   "builders": [{
-    "vm_name": "oracle511",
+    "vm_name": "oel511",
     "type": "vmware-iso",
     "guest_os_type": "oraclelinux-64",
     "http_directory": "http",
@@ -39,7 +39,7 @@
     }
   },
   {
-    "vm_name": "oracle511",
+    "vm_name": "oel511",
     "type": "virtualbox-iso",
     "http_directory": "http",
     "iso_url": "{{ user `iso_url` }}",
@@ -90,6 +90,6 @@
   "post-processors": [{
     "type": "vagrant",
     "keep_input_artifact": false,
-    "output": "box/{{.Provider}}/oracle511-{{user `cm`}}{{user `cm_version`}}-{{user `version`}}.box"
+    "output": "box/{{.Provider}}/oel511-{{user `cm`}}{{user `cm_version`}}-{{user `version`}}.box"
   }]
 }
