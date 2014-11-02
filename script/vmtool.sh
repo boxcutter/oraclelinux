@@ -27,7 +27,7 @@ install_vmware_tools_centos_70()
         popd
         tar cf vmhgfs.tar vmhgfs-only
         rm -rf vmhgfs-only
-        popd        
+        popd
     fi
 
     umount /mnt/floppy
@@ -40,7 +40,7 @@ install_vmware_tools_centos_70()
 
     echo "==> Removing packages needed for building guest tools"
     yum -y remove gcc cpp kernel-devel kernel-headers perl
-    
+
     exit
 }
 
@@ -92,6 +92,16 @@ if [[ $PACKER_BUILDER_TYPE =~ virtualbox ]]; then
     if [[ $VBOX_VERSION = "4.3.10" ]]; then
         ln -s /opt/VBoxGuestAdditions-4.3.10/lib/VBoxGuestAdditions /usr/lib/VBoxGuestAdditions
     fi
+fi
+
+if [[ $PACKER_BUILDER_TYPE =~ parallels ]]; then
+    echo "==> Installing Parallels tools"
+
+    mount -o loop /home/vagrant/prl-tools-lin.iso /mnt
+    /mnt/install --install-unattended-with-deps
+    umount /mnt
+    rm -rf /home/vagrant/prl-tools-lin.iso
+    rm -f /home/vagrant/.prlctl_version
 fi
 
 echo "==> Removing packages needed for building guest tools"
