@@ -53,7 +53,14 @@ endif
 BUILDER_TYPES := vmware virtualbox parallels
 TEMPLATE_FILENAMES := $(wildcard *.json)
 BOX_FILENAMES := $(TEMPLATE_FILENAMES:.json=$(BOX_SUFFIX))
-BOX_FILES := $(foreach builder, $(BUILDER_TYPES), $(foreach box_filename, $(BOX_FILENAMES), box/$(builder)/$(box_filename)))
+VMWARE_TEMPLATE_FILENAMES := oel510-i386.json oel510.json oel511-i386.json oel511.json oel57-i386.json oel57.json oel58-i386.json oel58.json oel59-i386.json oel59.json oel64-i386.json oel64.json oel65-desktop.json oel65-i386.json oel65.json
+VMWARE_BOX_FILENAMES := $(VMWARE_TEMPLATE_FILENAMES:.json=$(BOX_SUFFIX))
+VMWARE_BOX_FILES := $(foreach box_filename, $(VMWARE_BOX_FILENAMES), box/vmware/$(box_filename))
+VIRTUALBOX_BOX_FILES := $(foreach box_filename, $(BOX_FILENAMES), box/virtualbox/$(box_filename))
+PARALLELS_TEMPLATE_FILENAMES := oel64-i386.json oel64.json oel65-desktop.json oel65-i386.json oel65.json oel70-desktop.json oel70.json
+PARALLELS_BOX_FILENAMES := $(PARALLELS_TEMPLATE_FILENAMES:.json=$(BOX_SUFFIX))
+PARALLELS_BOX_FILES := $(foreach box_filename, $(PARALLELS_BOX_FILENAMES), box/parallels/$(box_filename))
+BOX_FILES := $(VMWARE_BOX_FILES) $(VIRTUALBOX_BOX_FILES) $(PARALLELS_BOX_FILES)
 TEST_BOX_FILES := $(foreach builder, $(BUILDER_TYPES), $(foreach box_filename, $(BOX_FILENAMES), test-box/$(builder)/$(box_filename)))
 VMWARE_BOX_DIR := box/vmware
 VIRTUALBOX_BOX_DIR := box/virtualbox
@@ -321,6 +328,11 @@ $(PARALLELS_BOX_DIR)/oel64$(BOX_SUFFIX): oel64.json $(SOURCES) http/ks6.cfg
 	mkdir -p $(PARALLELS_BOX_DIR)
 	packer build -only=$(PARALLELS_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE64_X86_64)" $<
 
+$(PARALLELS_BOX_DIR)/oel511$(BOX_SUFFIX): oel511.json $(SOURCES) http/ks5.cfg
+	rm -rf $(PARALLELS_OUTPUT)
+	mkdir -p $(PARALLELS_BOX_DIR)
+	packer build -only=$(PARALLELS_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE511_X86_64)" $<
+
 $(PARALLELS_BOX_DIR)/oel510$(BOX_SUFFIX): oel510.json $(SOURCES) http/ks5.cfg
 	rm -rf $(PARALLELS_OUTPUT)
 	mkdir -p $(PARALLELS_BOX_DIR)
@@ -350,6 +362,11 @@ $(PARALLELS_BOX_DIR)/oel64-i386$(BOX_SUFFIX): oel64-i386.json $(SOURCES) http/ks
 	rm -rf $(PARALLELS_OUTPUT)
 	mkdir -p $(PARALLELS_BOX_DIR)
 	packer build -only=$(PARALLELS_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE64_I386)" $<
+
+$(PARALLELS_BOX_DIR)/oel511-i386$(BOX_SUFFIX): oel511-i386.json $(SOURCES) http/ks5.cfg
+	rm -rf $(PARALLELS_OUTPUT)
+	mkdir -p $(PARALLELS_BOX_DIR)
+	packer build -only=$(PARALLELS_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE511_I386)" $<
 
 $(PARALLELS_BOX_DIR)/oel510-i386$(BOX_SUFFIX): oel510-i386.json $(SOURCES) http/ks5.cfg
 	rm -rf $(PARALLELS_OUTPUT)
