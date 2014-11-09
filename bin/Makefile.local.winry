@@ -1,5 +1,6 @@
 winry_oel := file:///Volumes/Storage/software/oel
 ORACLE70_X86_64 := $(winry_oel)/OracleLinux-R7-U0-Server-x86_64-dvd.iso
+ORACLE66_X86_64 := $(winry_oel)/OracleLinux-R6-U6-Server-x86_64-dvd.iso
 ORACLE65_X86_64 := $(winry_oel)/OracleLinux-R6-U5-Server-x86_64-dvd.iso
 ORACLE64_X86_64 := $(winry_oel)/OracleLinux-R6-U4-Server-x86_64-dvd.iso
 ORACLE511_X86_64 := $(winry_oel)/Enterprise-R5-U11-Server-x86_64-dvd.iso
@@ -7,6 +8,7 @@ ORACLE510_X86_64 := $(winry_oel)/Enterprise-R5-U10-Server-x86_64-dvd.iso
 ORACLE59_X86_64 := $(winry_oel)/Enterprise-R5-U9-Server-x86_64-dvd.iso
 ORACLE58_X86_64 := $(winry_oel)/OracleLinux-R5-U8-Server-x86_64-dvd.iso
 ORACLE57_X86_64 := $(winry_oel)/Enterprise-R5-U7-Server-x86_64-dvd.iso
+ORACLE66_I386 := $(winry_oel)/OracleLinux-R6-U6-Server-i386-dvd.iso
 ORACLE65_I386 := $(winry_oel)/OracleLinux-R6-U5-Server-i386-dvd.iso
 ORACLE64_I386 := $(winry_oel)/OracleLinux-R6-U4-Server-i386-dvd.iso
 ORACLE511_I386 := $(winry_oel)/Enterprise-R5-U11-Server-i386-dvd.iso
