@@ -9,6 +9,7 @@ $(error Packer version less than 0.5.x, please upgrade)
 endif
 
 ORACLE70_X86_64 ?= http://mirrors.dotsrc.org/oracle-linux/OL7/u0/x86_64/OracleLinux-R7-U0-Server-x86_64-dvd.iso
+ORACLE66_X86_64 ?= http://mirrors.dotsrc.org/oracle-linux/OL6/U6/x86_64/OracleLinux-R6-U6-Server-x86_64-dvd.iso
 ORACLE65_X86_64 ?= http://mirrors.dotsrc.org/oracle-linux/OL6/U5/x86_64/OracleLinux-R6-U5-Server-x86_64-dvd.iso
 ORACLE64_X86_64 ?= http://mirrors.dotsrc.org/oracle-linux/OL6/U4/x86_64/OracleLinux-R6-U4-Server-x86_64-dvd.iso
 ORACLE511_X86_64 ?= http://mirrors.dotsrc.org/oracle-linux/EL5/U11/x86_64/Enterprise-R5-U11-Server-x86_64-dvd.iso
@@ -16,6 +17,7 @@ ORACLE510_X86_64 ?= http://mirrors.dotsrc.org/oracle-linux/EL5/U10/x86_64/Enterp
 ORACLE59_X86_64 ?= http://mirrors.dotsrc.org/oracle-linux/EL5/U9/x86_64/Enterprise-R5-U9-Server-x86_64-dvd.iso
 ORACLE58_X86_64 ?= http://mirrors.dotsrc.org/oracle-linux/EL5/U8/x86_64/OracleLinux-R5-U8-Server-x86_64-dvd.iso
 ORACLE57_X86_64 ?= http://mirrors.dotsrc.org/oracle-linux/EL5/U7/x86_64/Enterprise-R5-U7-Server-x86_64-dvd.iso
+ORACLE66_I386 ?= http://mirrors.dotsrc.org/oracle-linux/OL6/U6/i386/OracleLinux-R6-U6-Server-i386-dvd.iso
 ORACLE65_I386 ?= http://mirrors.dotsrc.org/oracle-linux/OL6/U5/i386/OracleLinux-R6-U5-Server-i386-dvd.iso
 ORACLE64_I386 ?= http://mirrors.dotsrc.org/oracle-linux/OL6/U4/i386/OracleLinux-R6-U4-Server-i386-dvd.iso
 ORACLE511_I386 ?= http://mirrors.dotsrc.org/oracle-linux/EL5/U11/i386/Enterprise-R5-U11-Server-i386-dvd.iso
@@ -53,11 +55,11 @@ endif
 BUILDER_TYPES := vmware virtualbox parallels
 TEMPLATE_FILENAMES := $(wildcard *.json)
 BOX_FILENAMES := $(TEMPLATE_FILENAMES:.json=$(BOX_SUFFIX))
-VMWARE_TEMPLATE_FILENAMES := oel510-i386.json oel510.json oel511-i386.json oel511.json oel57-i386.json oel57.json oel58-i386.json oel58.json oel59-i386.json oel59.json oel64-i386.json oel64.json oel65-desktop.json oel65-i386.json oel65.json
+VMWARE_TEMPLATE_FILENAMES := oel510-i386.json oel510.json oel511-i386.json oel511.json oel57-i386.json oel57.json oel58-i386.json oel58.json oel59-i386.json oel59.json oel64-i386.json oel64.json oel65-desktop.json oel65-i386.json oel65.json oel66-desktop.json oel66-i386.json oel66.json
 VMWARE_BOX_FILENAMES := $(VMWARE_TEMPLATE_FILENAMES:.json=$(BOX_SUFFIX))
 VMWARE_BOX_FILES := $(foreach box_filename, $(VMWARE_BOX_FILENAMES), box/vmware/$(box_filename))
 VIRTUALBOX_BOX_FILES := $(foreach box_filename, $(BOX_FILENAMES), box/virtualbox/$(box_filename))
-PARALLELS_TEMPLATE_FILENAMES := oel64-i386.json oel64.json oel65-desktop.json oel65-i386.json oel65.json oel70-desktop.json oel70.json
+PARALLELS_TEMPLATE_FILENAMES := oel64-i386.json oel64.json oel65-desktop.json oel65-i386.json oel65.json oel66-desktop.json oel66-i386.json oel66.json oel70-desktop.json oel70.json
 PARALLELS_BOX_FILENAMES := $(PARALLELS_TEMPLATE_FILENAMES:.json=$(BOX_SUFFIX))
 PARALLELS_BOX_FILES := $(foreach box_filename, $(PARALLELS_BOX_FILENAMES), box/parallels/$(box_filename))
 BOX_FILES := $(VMWARE_BOX_FILES) $(VIRTUALBOX_BOX_FILES) $(PARALLELS_BOX_FILES)
@@ -108,7 +110,7 @@ test-$(1): test-vmware/$(1) test-virtualbox/$(1) test-parallels/$(1)
 
 endef
 
-SHORTCUT_TARGETS := oel70 oel70-desktop oel65 oel65-desktop oel64 oel511 oel510 oel59 oel58 oel57 oel65-i386 oel64-i386 oel511-i386 oel510-i386 oel59-i386 oel58-i386 oel57-i386
+SHORTCUT_TARGETS := oel70 oel70-desktop oel66 oel66-desktop oel65 oel65-desktop oel64 oel511 oel510 oel59 oel58 oel57 oel66-i386 oel65-i386 oel64-i386 oel511-i386 oel510-i386 oel59-i386 oel58-i386 oel57-i386
 $(foreach i,$(SHORTCUT_TARGETS),$(eval $(call SHORTCUT,$(i))))
 ###############################################################################
 
@@ -129,10 +131,20 @@ $(VMWARE_BOX_DIR)/oel70-desktop$(BOX_SUFFIX): oel70-desktop.json $(SOURCES) http
 	mkdir -p $(VMWARE_BOX_DIR)
 	$(PACKER) build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE70_X86_64)" $<
 
-$(VMWARE_BOX_DIR)/oel65$(BOX_SUFFIX): oel65.json $(SOURCES) http/ks6.cfg
+$(VMWARE_BOX_DIR)/oel66$(BOX_SUFFIX): oel66.json $(SOURCES) http/ks6.cfg
 	rm -rf $(VMWARE_OUTPUT)
 	mkdir -p $(VMWARE_BOX_DIR)
-	$(PACKER) build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE65_X86_64)" $<
+	$(PACKER) build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE66_X86_64)" $<
+
+$(VMWARE_BOX_DIR)/oel66-desktop$(BOX_SUFFIX): oel66-desktop.json $(SOURCES) http/ks6-desktop.cfg
+	rm -rf $(VMWARE_OUTPUT)
+	mkdir -p $(VMWARE_BOX_DIR)
+	$(PACKER) build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE66_X86_64)" $<
+
+$(VMWARE_BOX_DIR)/oel66$(BOX_SUFFIX): oel66.json $(SOURCES) http/ks6.cfg
+	rm -rf $(VMWARE_OUTPUT)
+	mkdir -p $(VMWARE_BOX_DIR)
+	$(PACKER) build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE66_X86_64)" $<
 
 $(VMWARE_BOX_DIR)/oel65-desktop$(BOX_SUFFIX): oel65-desktop.json $(SOURCES) http/ks6-desktop.cfg
 	rm -rf $(VMWARE_OUTPUT)
@@ -220,6 +232,16 @@ $(VIRTUALBOX_BOX_DIR)/oel70-desktop$(BOX_SUFFIX): oel70-desktop.json $(SOURCES) 
 	rm -rf $(VIRTUALBOX_OUTPUT)
 	mkdir -p $(VIRTUALBOX_BOX_DIR)
 	$(PACKER) build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE70_X86_64)" $<
+
+$(VIRTUALBOX_BOX_DIR)/oel66$(BOX_SUFFIX): oel66.json $(SOURCES) http/ks6.cfg
+	rm -rf $(VIRTUALBOX_OUTPUT)
+	mkdir -p $(VIRTUALBOX_BOX_DIR)
+	$(PACKER) build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE66_X86_64)" $<
+
+$(VIRTUALBOX_BOX_DIR)/oel66-desktop$(BOX_SUFFIX): oel66-desktop.json $(SOURCES) http/ks6-desktop.cfg
+	rm -rf $(VIRTUALBOX_OUTPUT)
+	mkdir -p $(VIRTUALBOX_BOX_DIR)
+	$(PACKER) build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE66_X86_64)" $<
 
 $(VIRTUALBOX_BOX_DIR)/oel65$(BOX_SUFFIX): oel65.json $(SOURCES) http/ks6.cfg
 	rm -rf $(VIRTUALBOX_OUTPUT)
@@ -312,6 +334,16 @@ $(PARALLELS_BOX_DIR)/oel70-desktop$(BOX_SUFFIX): oel70-desktop.json $(SOURCES) h
 	rm -rf $(PARALLELS_OUTPUT)
 	mkdir -p $(PARALLELS_BOX_DIR)
 	packer build -only=$(PARALLELS_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE70_X86_64)" $<
+
+$(PARALLELS_BOX_DIR)/oel66$(BOX_SUFFIX): oel66.json $(SOURCES) http/ks6.cfg
+	rm -rf $(PARALLELS_OUTPUT)
+	mkdir -p $(PARALLELS_BOX_DIR)
+	packer build -only=$(PARALLELS_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE66_X86_64)" $<
+
+$(PARALLELS_BOX_DIR)/oel66-desktop$(BOX_SUFFIX): oel66-desktop.json $(SOURCES) http/ks6-desktop.cfg
+	rm -rf $(PARALLELS_OUTPUT)
+	mkdir -p $(PARALLELS_BOX_DIR)
+	packer build -only=$(PARALLELS_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE66_X86_64)" $<
 
 $(PARALLELS_BOX_DIR)/oel65$(BOX_SUFFIX): oel65.json $(SOURCES) http/ks6.cfg
 	rm -rf $(PARALLELS_OUTPUT)
