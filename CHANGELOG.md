@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.5 (2014-11-09)
+
+* Upgrade VMware Tools to 9.8.4 for VMware Fusion 7.0.1
+* Add template for Oracle Enterprise Linux 6.6
+* Add Parallels 10.1.1 boxes to build
+
 ## 1.0.4 (2014-10-17)
 
 * Upgrade VirtualBox guest additions to 4.3.18
