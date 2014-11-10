@@ -45,11 +45,11 @@ upload-s3-parallels:
 		aws s3 cp $$parallels_box_file $(PARALLELS_S3_BUCKET) --storage-class REDUCED_REDUNDANCY --grants full=$(S3_GRANT_ID) read=$(ALLUSERS_ID) ; \
 	done
 
-VAGRANTCLOUD_VIRTUALBOX_TARGETS := oel70 oel70-desktop oel65 oel65-desktop oel64 oel511 oel510 oel59 oel58 oel57 oel65-i386 oel64-i386 oel511-i386 oel510-i386 oel59-i386 oel58-i386 oel57-i386
+VAGRANTCLOUD_VIRTUALBOX_TARGETS := oel70 oel70-desktop oel66 oel66-desktop oel66-i386 oel65 oel65-desktop oel64 oel511 oel510 oel59 oel58 oel57 oel65-i386 oel64-i386 oel511-i386 oel510-i386 oel59-i386 oel58-i386 oel57-i386
 
-VAGRANTCLOUD_VMWARE_TARGETS := oel65 oel65-desktop oel64 oel511 oel510 oel59 oel58 oel57 oel65-i386 oel64-i386 oel511-i386 oel510-i386 oel59-i386 oel58-i386 oel57-i386
+VAGRANTCLOUD_VMWARE_TARGETS := oel66 oel66-desktop oel66-i386 oel65 oel65-desktop oel64 oel511 oel510 oel59 oel58 oel57 oel65-i386 oel64-i386 oel511-i386 oel510-i386 oel59-i386 oel58-i386 oel57-i386
 
-VAGRANTCLOUD_PARALLELS_TARGETS := oel70 oel70-desktop oel65 oel65-desktop oel64 oel65-i386 oel64-i386
+VAGRANTCLOUD_PARALLELS_TARGETS := oel70 oel70-desktop oel66 oel66-desktop oel66-i386 oel65 oel65-desktop oel64 oel65-i386 oel64-i386
 
 test-vagrantcloud: test-vagrantcloud-vmware test-vagrantcloud-virtualbox test-vagrantcloud-parallels
 
