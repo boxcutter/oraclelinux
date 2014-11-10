@@ -141,10 +141,10 @@ $(VMWARE_BOX_DIR)/oel66-desktop$(BOX_SUFFIX): oel66-desktop.json $(SOURCES) http
 	mkdir -p $(VMWARE_BOX_DIR)
 	$(PACKER) build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE66_X86_64)" $<
 
-$(VMWARE_BOX_DIR)/oel66$(BOX_SUFFIX): oel66.json $(SOURCES) http/ks6.cfg
+$(VMWARE_BOX_DIR)/oel65$(BOX_SUFFIX): oel65.json $(SOURCES) http/ks6.cfg
 	rm -rf $(VMWARE_OUTPUT)
 	mkdir -p $(VMWARE_BOX_DIR)
-	$(PACKER) build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE66_X86_64)" $<
+	$(PACKER) build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE65_X86_64)" $<
 
 $(VMWARE_BOX_DIR)/oel65-desktop$(BOX_SUFFIX): oel65-desktop.json $(SOURCES) http/ks6-desktop.cfg
 	rm -rf $(VMWARE_OUTPUT)
@@ -180,6 +180,11 @@ $(VMWARE_BOX_DIR)/oel57$(BOX_SUFFIX): oel57.json $(SOURCES) http/ks5.cfg
 	rm -rf $(VMWARE_OUTPUT)
 	mkdir -p $(VMWARE_BOX_DIR)
 	$(PACKER) build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE57_X86_64)" $<
+
+$(VMWARE_BOX_DIR)/oel66-i386$(BOX_SUFFIX): oel66-i386.json $(SOURCES) http/ks6.cfg
+	rm -rf $(VMWARE_OUTPUT)
+	mkdir -p $(VMWARE_BOX_DIR)
+	$(PACKER) build -only=$(VMWARE_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE66_I386)" $<
 
 $(VMWARE_BOX_DIR)/oel65-i386$(BOX_SUFFIX): oel65-i386.json $(SOURCES) http/ks6.cfg
 	rm -rf $(VMWARE_OUTPUT)
@@ -283,6 +288,11 @@ $(VIRTUALBOX_BOX_DIR)/oel57$(BOX_SUFFIX): oel57.json $(SOURCES) http/ks5.cfg
 	mkdir -p $(VIRTUALBOX_BOX_DIR)
 	$(PACKER) build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE57_X86_64)" $<
 
+$(VIRTUALBOX_BOX_DIR)/oel66-i386$(BOX_SUFFIX): oel66-i386.json $(SOURCES) http/ks6.cfg
+	rm -rf $(VIRTUALBOX_OUTPUT)
+	mkdir -p $(VIRTUALBOX_BOX_DIR)
+	$(PACKER) build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE66_I386)" $<
+
 $(VIRTUALBOX_BOX_DIR)/oel65-i386$(BOX_SUFFIX): oel65-i386.json $(SOURCES) http/ks6.cfg
 	rm -rf $(VIRTUALBOX_OUTPUT)
 	mkdir -p $(VIRTUALBOX_BOX_DIR)
@@ -384,6 +394,11 @@ $(PARALLELS_BOX_DIR)/oel57$(BOX_SUFFIX): oel57.json $(SOURCES) http/ks5.cfg
 	rm -rf $(PARALLELS_OUTPUT)
 	mkdir -p $(PARALLELS_BOX_DIR)
 	packer build -only=$(PARALLELS_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE57_X86_64)" $<
+
+$(PARALLELS_BOX_DIR)/oel66-i386$(BOX_SUFFIX): oel66-i386.json $(SOURCES) http/ks6.cfg
+	rm -rf $(PARALLELS_OUTPUT)
+	mkdir -p $(PARALLELS_BOX_DIR)
+	packer build -only=$(PARALLELS_BUILDER) $(PACKER_VARS) -var "iso_url=$(ORACLE66_I386)" $<
 
 $(PARALLELS_BOX_DIR)/oel65-i386$(BOX_SUFFIX): oel65-i386.json $(SOURCES) http/ks6.cfg
 	rm -rf $(PARALLELS_OUTPUT)
