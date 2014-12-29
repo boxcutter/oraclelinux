@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.8 (2014-12-28)
+
+* Upgrade Parallels Tools to 10.1.2
+* Default timezone is now UTC
+
 ## 1.0.7 (2014-12-07)
 
 * Upgrade VMware Tools to 9.9.0 for VMware Fusion 7.1.0
