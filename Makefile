@@ -61,11 +61,11 @@ BOX_FILENAMES := $(TEMPLATE_FILENAMES:.json=$(BOX_SUFFIX))
 VMWARE_BOX_DIR := box/vmware
 VIRTUALBOX_BOX_DIR := box/virtualbox
 PARALLELS_BOX_DIR := box/parallels
-VMWARE_TEMPLATE_FILENAMES := oel510-i386.json oel510.json oel511-i386.json oel511.json oel57-i386.json oel57.json oel58-i386.json oel58.json oel59-i386.json oel59.json oel64-i386.json oel64.json oel65-desktop.json oel65-i386.json oel65.json oel66-desktop.json oel66-i386.json oel66.json
+VMWARE_TEMPLATE_FILENAMES := $(TEMPLATE_FILENAMES)
 VMWARE_BOX_FILENAMES := $(VMWARE_TEMPLATE_FILENAMES:.json=$(BOX_SUFFIX))
 VMWARE_BOX_FILES := $(foreach box_filename, $(VMWARE_BOX_FILENAMES), $(VMWARE_BOX_DIR)/$(box_filename))
 VIRTUALBOX_BOX_FILES := $(foreach box_filename, $(BOX_FILENAMES), $(VIRTUALBOX_BOX_DIR)/$(box_filename))
-PARALLELS_TEMPLATE_FILENAMES := oel64-i386.json oel64.json oel65-desktop.json oel65-i386.json oel65.json oel66-desktop.json oel66-i386.json oel66.json oel70-desktop.json oel70.json
+PARALLELS_TEMPLATE_FILENAMES := oel66-desktop.json oel66-i386.json oel66.json oel70-desktop.json
 PARALLELS_BOX_FILENAMES := $(PARALLELS_TEMPLATE_FILENAMES:.json=$(BOX_SUFFIX))
 PARALLELS_BOX_FILES := $(foreach box_filename, $(PARALLELS_BOX_FILENAMES), $(PARALLELS_BOX_DIR)/$(box_filename))
 BOX_FILES := $(VMWARE_BOX_FILES) $(VIRTUALBOX_BOX_FILES) $(PARALLELS_BOX_FILES)
@@ -503,13 +503,13 @@ S3_STORAGE_CLASS ?= REDUCED_REDUNDANCY
 S3_ALLUSERS_ID ?= uri=http://acs.amazonaws.com/groups/global/AllUsers
 
 s3cp-$(VMWARE_BOX_DIR)/%$(BOX_SUFFIX): $(VMWARE_BOX_DIR)/%$(BOX_SUFFIX)
-	aws s3 cp $< $(VMWARE_S3_BUCKET) --storage-class $(S3_STORAGE_CLASS) --grants full=$(S3_GRANT_ID) read=$(S3_ALLUSERS_ID)
+	aws --profile $(AWS_PROFILE) s3 cp $< $(VMWARE_S3_BUCKET) --storage-class $(S3_STORAGE_CLASS) --grants full=$(S3_GRANT_ID) read=$(S3_ALLUSERS_ID)
 
 s3cp-$(VIRTUALBOX_BOX_DIR)/%$(BOX_SUFFIX): $(VIRTUALBOX_BOX_DIR)/%$(BOX_SUFFIX)
-	aws s3 cp $< $(VIRTUALBOX_S3_BUCKET) --storage-class $(S3_STORAGE_CLASS) --grants full=$(S3_GRANT_ID) read=$(S3_ALLUSERS_ID)
+	aws --profile $(AWS_PROFILE) s3 cp $< $(VIRTUALBOX_S3_BUCKET) --storage-class $(S3_STORAGE_CLASS) --grants full=$(S3_GRANT_ID) read=$(S3_ALLUSERS_ID)
 
 s3cp-$(PARALLELS_BOX_DIR)/%$(BOX_SUFFIX): $(PARALLELS_BOX_DIR)/%$(BOX_SUFFIX)
-	aws s3 cp $< $(PARALLELS_S3_BUCKET) --storage-class $(S3_STORAGE_CLASS) --grants full=$(S3_GRANT_ID) read=$(S3_ALLUSERS_ID)
+	aws --profile $(AWS_PROFILE) s3 cp $< $(PARALLELS_S3_BUCKET) --storage-class $(S3_STORAGE_CLASS) --grants full=$(S3_GRANT_ID) read=$(S3_ALLUSERS_ID)
 
 s3cp-vmware: $(addprefix s3cp-,$(VMWARE_BOX_FILES))
 s3cp-virtualbox: $(addprefix s3cp-,$(VIRTUALBOX_BOX_FILES))
