@@ -1,5 +1,4 @@
 # Packer templates for Oracle Enterprise Linux
-[![Build Status](https://box-cutter.ci.cloudbees.com/buildStatus/icon?job=oel-vm)](https://box-cutter.ci.cloudbees.com/job/oel-vm/)
 
 ### Overview
 
@@ -10,29 +9,29 @@ Vagrant boxes using Packer.
 
 64-bit boxes:
 
-* [box-cutter/oel70](https://vagrantcloud.com/box-cutter/oel70) - Oracle Enterprise Linux 7.0 (64-bit), VirtualBox 397MB/Parallels 430MB
-* [box-cutter/oel70-desktop](https://vagrantcloud.com/box-cutter/oel70-desktop) - Oracle Enterprise Linux 7.0 Desktop (64-bit), VirtualBox 932MB/Parallels 962MB
-* [box-cutter/oel66](https://vagrantcloud.com/box-cutter/oel66) - Oracle Enterprise Linux 6.6 (64-bit), VMware 588MB/VirtualBox 508MB/Parallels 588MB
-* [box-cutter/oel66-desktop](https://vagrantcloud.com/box-cutter/oel66-desktop) - Oracle Enterprise Linux 6.6 (64-bit), VMware 1.2GB/VirtualBox 1.2GB/Parallels 1.3GB
-* [box-cutter/oel65](https://vagrantcloud.com/box-cutter/oel65) - Oracle Enterprise Linux 6.5 (64-bit), VMware 561MB/VirtualBox 513MB/Parallels 579MB
-* [box-cutter/oel65-desktop](https://vagrantcloud.com/box-cutter/oel65-desktop) - Oracle Enterprise Linux 6.5 (64-bit), VMware 1.2GB/VirtualBox 1.1GB/Parallels 1.2GB
-* [box-cutter/oel64](https://vagrantcloud.com/box-cutter/oel64) - Oracle Enterprise Linux 6.4 (64-bit), VMware 501MB/VirtualBox 427MB/Parallels 484MB
-* [box-cutter/oel511](https://vagrantcloud.com/box-cutter/oel511) - Oracle Enterprise Linux 5.11 (64-bit), VMware 278MB/VirtualBox 302MB
-* [box-cutter/oel510](https://vagrantcloud.com/box-cutter/oel510) - Oracle Enterprise Linux 5.10 (64-bit), VMware 278MB/VirtualBox 203MB
-* [box-cutter/oel59](https://vagrantcloud.com/box-cutter/oel59) - Oracle Enterprise Linux 5.9 (64-bit), VMware 277MB/VirtualBox 198MB
-* [box-cutter/oel58](https://vagrantcloud.com/box-cutter/oel58) - Oracle Enterprise Linux 5.8 (64-bit), VMware 262MB/VirtualBox 187MB
-* [box-cutter/oel57](https://vagrantcloud.com/box-cutter/oel57) - Oracle Enterprise Linux 5.7 (64-bit), VMware 263MB/VirtualBox 188MB
+* Oracle Enterprise Linux 7.0 (64-bit), VirtualBox 397MB/Parallels 430MB
+* Oracle Enterprise Linux 7.0 Desktop (64-bit), VirtualBox 932MB/Parallels 962MB
+* Oracle Enterprise Linux 6.6 (64-bit), VMware 588MB/VirtualBox 508MB/Parallels 588MB
+* Oracle Enterprise Linux 6.6 (64-bit), VMware 1.2GB/VirtualBox 1.2GB/Parallels 1.3GB
+* Oracle Enterprise Linux 6.5 (64-bit), VMware 561MB/VirtualBox 513MB/Parallels 579MB
+* Oracle Enterprise Linux 6.5 (64-bit), VMware 1.2GB/VirtualBox 1.1GB/Parallels 1.2GB
+* Oracle Enterprise Linux 6.4 (64-bit), VMware 501MB/VirtualBox 427MB/Parallels 484MB
+* Oracle Enterprise Linux 5.11 (64-bit), VMware 278MB/VirtualBox 302MB
+* Oracle Enterprise Linux 5.10 (64-bit), VMware 278MB/VirtualBox 203MB
+* Oracle Enterprise Linux 5.9 (64-bit), VMware 277MB/VirtualBox 198MB
+* Oracle Enterprise Linux 5.8 (64-bit), VMware 262MB/VirtualBox 187MB
+* Oracle Enterprise Linux 5.7 (64-bit), VMware 263MB/VirtualBox 188MB
 
 32-bit boxes:
 
-* [box-cutter/oel66-i386](https://vagrantcloud.com/box-cutter/oel66-i386) - Oracle Enterprise Linux 6.6 (32-bit), VMware 501MB/VirtualBox 433MB/Parallels 484MB
-* [box-cutter/oel65-i386](https://vagrantcloud.com/box-cutter/oel65-i386) - Oracle Enterprise Linux 6.5 (32-bit), VMware 471MB/VirtualBox 400MB/Parallels 477MB
-* [box-cutter/oel64-i386](https://vagrantcloud.com/box-cutter/oel64-i386) - Oracle Enterprise Linux 6.4 (32-bit), VMware 422MB/VirtualBox 379MB/Parallels 445MB
-* [box-cutter/oel511-i386](https://vagrantcloud.com/box-cutter/oel511-i386) - Oracle Enterprise Linux 5.11 (32-bit), VMware 268MB/VirtualBox 192MB
-* [box-cutter/oel510-i386](https://vagrantcloud.com/box-cutter/oel510-i386) - Oracle Enterprise Linux 5.10 (32-bit), VMware 262MB/VirtualBox 194MB
-* [box-cutter/oel59-i386](https://vagrantcloud.com/box-cutter/oel59-i386) - Oracle Enterprise Linux 5.9 (32-bit), VMware 260MB/VirtualBox 188MB
-* [box-cutter/oel58-i386](https://vagrantcloud.com/box-cutter/oel58-i386) - Oracle Enterprise Linux 5.8 (32-bit), VMware 252MB/VirtualBox 177MB
-* [box-cutter/oel57-i386](https://vagrantcloud.com/box-cutter/oel57-i386) - Oracle Enterprise Linux 5.7 (32-bit), VMware 253MB/VirtualBox 178MB
+* Oracle Enterprise Linux 6.6 (32-bit), VMware 501MB/VirtualBox 433MB/Parallels 484MB
+* Oracle Enterprise Linux 6.5 (32-bit), VMware 471MB/VirtualBox 400MB/Parallels 477MB
+* Oracle Enterprise Linux 6.4 (32-bit), VMware 422MB/VirtualBox 379MB/Parallels 445MB
+* Oracle Enterprise Linux 5.11 (32-bit), VMware 268MB/VirtualBox 192MB
+* Oracle Enterprise Linux 5.10 (32-bit), VMware 262MB/VirtualBox 194MB
+* Oracle Enterprise Linux 5.9 (32-bit), VMware 260MB/VirtualBox 188MB
+* Oracle Enterprise Linux 5.8 (32-bit), VMware 252MB/VirtualBox 177MB
+* Oracle Enterprise Linux 5.7 (32-bit), VMware 253MB/VirtualBox 178MB
 
 ## Building the Vagrant boxes
 
@@ -148,9 +147,3 @@ This override is commonly used to speed up Packer builds by
 pointing at pre-downloaded ISOs instead of using the default
 download Internet URLs:
 `ORACLE66_X86_64 := file:///Volumes/OL6/OracleLinux-R6-U6-Server-x86_64-dvd.iso`
-
-### Acknowledgments
-
-[CloudBees](http://www.cloudbees.com) is providing a hosted [Jenkins master](http://box-cutter.ci.cloudbees.com/) through their CloudBees FOSS program. Their [On-Premise Executor](https://developer.cloudbees.com/bin/view/DEV/On-Premise+Executors) feature is used to connect physical machines as build slaves running VirtualBox, VMware Fusion, VMware Workstation, VMware ESXi/vSphere and Hyper-V.
-
-![Powered By CloudBees](http://www.cloudbees.com/sites/default/files/Button-Powered-by-CB.png "Powered By CloudBees")![Built On DEV@Cloud](http://www.cloudbees.com/sites/default/files/Button-Built-on-CB-1.png "Built On DEV@Cloud")
