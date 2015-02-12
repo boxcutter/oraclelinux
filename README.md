@@ -147,3 +147,9 @@ This override is commonly used to speed up Packer builds by
 pointing at pre-downloaded ISOs instead of using the default
 download Internet URLs:
 `ORACLE66_X86_64 := file:///Volumes/OL6/OracleLinux-R6-U6-Server-x86_64-dvd.iso`
+
+### Acknowledgments
+
+[SmartyStreets](http://www.smartystreets.com) is providing basebox hosting for the box-cutter project.
+
+![Powered By SmartyStreets](https://smartystreets.com/resources/images/smartystreets-flat.png)
