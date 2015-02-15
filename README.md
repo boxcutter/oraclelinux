@@ -9,29 +9,29 @@ Vagrant boxes using Packer.
 
 64-bit boxes:
 
-* Oracle Enterprise Linux 7.0 (64-bit), VirtualBox 397MB/Parallels 430MB
-* Oracle Enterprise Linux 7.0 Desktop (64-bit), VirtualBox 932MB/Parallels 962MB
-* Oracle Enterprise Linux 6.6 (64-bit), VMware 588MB/VirtualBox 508MB/Parallels 588MB
-* Oracle Enterprise Linux 6.6 (64-bit), VMware 1.2GB/VirtualBox 1.2GB/Parallels 1.3GB
-* Oracle Enterprise Linux 6.5 (64-bit), VMware 561MB/VirtualBox 513MB/Parallels 579MB
-* Oracle Enterprise Linux 6.5 (64-bit), VMware 1.2GB/VirtualBox 1.1GB/Parallels 1.2GB
-* Oracle Enterprise Linux 6.4 (64-bit), VMware 501MB/VirtualBox 427MB/Parallels 484MB
-* Oracle Enterprise Linux 5.11 (64-bit), VMware 278MB/VirtualBox 302MB
-* Oracle Enterprise Linux 5.10 (64-bit), VMware 278MB/VirtualBox 203MB
-* Oracle Enterprise Linux 5.9 (64-bit), VMware 277MB/VirtualBox 198MB
-* Oracle Enterprise Linux 5.8 (64-bit), VMware 262MB/VirtualBox 187MB
-* Oracle Enterprise Linux 5.7 (64-bit), VMware 263MB/VirtualBox 188MB
+* [Oracle Enterprise Linux 7.0 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel70), VirtualBox 462MB/Parallels 399MB
+* [Oracle Enterprise Linux 7.0 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel70-desktop), VMware 1.0GB/VirtualBox 940MB/Parallels 925MB
+* [Oracle Enterprise Linux 6.6 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel66), VMware 576MB/VirtualBox 504MB/Parallels 519MB
+* [Oracle Enterprise Linux 6.6 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel66-desktop), VMware 1.2GB/VirtualBox 1.2GB/Parallels 1.2GB
+* [Oracle Enterprise Linux 6.5 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel65), VMware 551MB/VirtualBox 492MB
+* [Oracle Enterprise Linux 6.5 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel65-desktop), VMware 1.2GB/VirtualBox 1.1GB
+* [Oracle Enterprise Linux 6.4 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel64), VMware 499MB/VirtualBox 434MB
+* [Oracle Enterprise Linux 5.11 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel511), VMware 278MB/VirtualBox 204MB
+* [Oracle Enterprise Linux 5.10 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel510), VMware 278MB/VirtualBox 203MB
+* [Oracle Enterprise Linux 5.9 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel59), VMware 277MB/VirtualBox 198MB
+* Oracle Enterprise Linux 5.8 (64-bit), VMware 261MB/VirtualBox 187MB
+* [Oracle Enterprise Linux 5.7 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel57), VMware 263MB/VirtualBox 188MB
 
 32-bit boxes:
 
-* Oracle Enterprise Linux 6.6 (32-bit), VMware 501MB/VirtualBox 433MB/Parallels 484MB
-* Oracle Enterprise Linux 6.5 (32-bit), VMware 471MB/VirtualBox 400MB/Parallels 477MB
-* Oracle Enterprise Linux 6.4 (32-bit), VMware 422MB/VirtualBox 379MB/Parallels 445MB
-* Oracle Enterprise Linux 5.11 (32-bit), VMware 268MB/VirtualBox 192MB
-* Oracle Enterprise Linux 5.10 (32-bit), VMware 262MB/VirtualBox 194MB
-* Oracle Enterprise Linux 5.9 (32-bit), VMware 260MB/VirtualBox 188MB
-* Oracle Enterprise Linux 5.8 (32-bit), VMware 252MB/VirtualBox 177MB
-* Oracle Enterprise Linux 5.7 (32-bit), VMware 253MB/VirtualBox 178MB
+* [Oracle Enterprise Linux 6.6 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel66-i386), VMware 500MB/VirtualBox 441MB/Parallels 478MB
+* [Oracle Enterprise Linux 6.5 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel65-i386), VMware 484MB/VirtualBox 415MB
+* [Oracle Enterprise Linux 6.4 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel64-i386), VMware 427MB/VirtualBox 392MB
+* [Oracle Enterprise Linux 5.11 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel511-i386), VMware 268MB/VirtualBox 192MB
+* [Oracle Enterprise Linux 5.10 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel510-i386), VMware 267MB/VirtualBox 192MB
+* [Oracle Enterprise Linux 5.9 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel59-i386), VMware 266MB/VirtualBox 186MB
+* [Oracle Enterprise Linux 5.8 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel58-i386), VMware 252MB/VirtualBox 177MB
+* [Oracle Enterprise Linux 5.7 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel57-i386), VMware 253MB/VirtualBox 178MB
 
 ## Building the Vagrant boxes
 
@@ -39,7 +39,7 @@ To build all the boxes, you will need Packer and both VirtualBox, VMware
 Fusion, and Parallels Desktop for Mac installed.
 
 Parallels requires that the
-[Parallels Virtualization SDK for Mac](http://ww.parallels.com/downloads/desktop)
+[Parallels Virtualization SDK for Mac](http://www.parallels.com/downloads/desktop)
 be installed as an additional preqrequisite.
 
 A GNU Make `Makefile` drives the process via the following targets:
