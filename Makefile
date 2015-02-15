@@ -3,6 +3,8 @@ ifneq ("$(wildcard Makefile.local)", "")
 	include Makefile.local
 endif
 
+PACKER := packer
+
 # Possible values for CM: (nocm | chef | chefdk | salt | puppet)
 CM ?= nocm
 # Possible values for CM_VERSION: (latest | x.y.z | x.y)
@@ -29,9 +31,9 @@ ifdef CM_VERSION
 endif
 PACKER_VARS := $(addprefix -var , $(PACKER_VARS_LIST))
 ifdef PACKER_DEBUG
-	PACKER := PACKER_LOG=1 packer --debug
+	PACKER_CMD := PACKER_LOG=1 $(PACKER) --debug
 else
-	PACKER := packer
+	PACKER_CMD := $(PACKER)
 endif
 BUILDER_TYPES := vmware virtualbox parallels
 TEMPLATE_FILENAMES := $(wildcard *.json)
@@ -106,17 +108,17 @@ $(foreach i,$(SHORTCUT_TARGETS),$(eval $(call SHORTCUT,$(i))))
 $(VMWARE_BOX_DIR)/%$(BOX_SUFFIX): %.json $(SOURCES)
 	rm -rf $(VMWARE_OUTPUT)
 	mkdir -p $(VMWARE_BOX_DIR)
-	$(PACKER) build -only=$(VMWARE_BUILDER) $(PACKER_VARS) $<
+	$(PACKER_CMD) build -only=$(VMWARE_BUILDER) $(PACKER_VARS) $<
 
 $(VIRTUALBOX_BOX_DIR)/%$(BOX_SUFFIX): %.json $(SOURCES)
 	rm -rf $(VIRTUALBOX_OUTPUT)
 	mkdir -p $(VIRTUALBOX_BOX_DIR)
-	$(PACKER) build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) $<
+	$(PACKER_CMD) build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) $<
 
 $(PARALLELS_BOX_DIR)/%$(BOX_SUFFIX): %.json $(SOURCES)
 	rm -rf $(PARALLELS_OUTPUT)
 	mkdir -p $(PARALLELS_BOX_DIR)
-	$(PACKER) build -only=$(PARALLELS_BUILDER) $(PACKER_VARS) $<
+	$(PACKER_CMD) build -only=$(PARALLELS_BUILDER) $(PACKER_VARS) $<
 
 list:
 	@echo "prepend 'vmware/', 'virtualbox/' or 'parallels/' to build only one target platform:"
