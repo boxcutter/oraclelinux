@@ -10,7 +10,10 @@
       "http_directory": "http",
       "iso_checksum": "{{ user `iso_checksum` }}",
       "iso_checksum_type": "sha1",
-      "iso_url": "{{ user `iso_url` }}",
+      "iso_urls": [
+        "{{ user `iso_path` }}/{{ user `iso_name` }}",
+        "{{ user `iso_url` }}"
+      ],
       "shutdown_command": "echo 'vagrant'|sudo -S shutdown -h now",
       "ssh_password": "{{ user `ssh_password` }}",
       "ssh_username": "{{ user `ssh_username` }}",
@@ -35,7 +38,10 @@
       "http_directory": "http",
       "iso_checksum": "{{ user `iso_checksum` }}",
       "iso_checksum_type": "sha1",
-      "iso_url": "{{ user `iso_url` }}",
+      "iso_urls": [
+        "{{ user `iso_path` }}/{{ user `iso_name` }}",
+        "{{ user `iso_url` }}"
+      ],
       "shutdown_command": "echo 'vagrant'|sudo -S shutdown -h now",
       "ssh_password": "{{ user `ssh_password` }}",
       "ssh_username": "{{ user `ssh_username` }}",
@@ -57,7 +63,10 @@
       "http_directory": "http",
       "iso_checksum": "{{ user `iso_checksum` }}",
       "iso_checksum_type": "sha1",
-      "iso_url": "{{ user `iso_url` }}",
+      "iso_urls": [
+        "{{ user `iso_path` }}/{{ user `iso_name` }}",
+        "{{ user `iso_url` }}"
+      ],
       "parallels_tools_flavor": "lin",
       "prlctl": [
         [ "set", "{{.Name}}", "--memsize", "512" ],
@@ -119,6 +128,8 @@
     "https_proxy": "{{env `https_proxy`}}",
     "install_vagrant_key": true,
     "iso_checksum": "a65041fbe0ba67e3ff6f5f93804a8f47d5b5f132",
+    "iso_name": "OracleLinux-R6-U5-Server-x86_64-dvd.iso",
+    "iso_path": "iso",
     "iso_url": "http://mirrors.dotsrc.org/oracle-linux/OL6/U5/x86_64/OracleLinux-R6-U5-Server-x86_64-dvd.iso",
     "no_proxy": "{{env `no_proxy`}}",
     "rsync_proxy": "{{env `rsync_proxy`}}",

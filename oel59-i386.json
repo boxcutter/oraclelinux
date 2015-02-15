@@ -10,7 +10,10 @@
       "http_directory": "http",
       "iso_checksum": "{{ user `iso_checksum` }}",
       "iso_checksum_type": "md5",
-      "iso_url": "{{ user `iso_url` }}",
+      "iso_urls": [
+        "{{ user `iso_path` }}/{{ user `iso_name` }}",
+        "{{ user `iso_url` }}"
+      ],
       "shutdown_command": "echo 'vagrant'|sudo -S /sbin/shutdown -h now",
       "ssh_password": "{{ user `ssh_password` }}",
       "ssh_username": "{{ user `ssh_username` }}",
@@ -35,7 +38,10 @@
       "http_directory": "http",
       "iso_checksum": "{{ user `iso_checksum` }}",
       "iso_checksum_type": "md5",
-      "iso_url": "{{ user `iso_url` }}",
+      "iso_urls": [
+        "{{ user `iso_path` }}/{{ user `iso_name` }}",
+        "{{ user `iso_url` }}"
+      ],
       "shutdown_command": "echo 'vagrant'|sudo -S /sbin/shutdown -h now",
       "ssh_password": "{{ user `ssh_password` }}",
       "ssh_username": "{{ user `ssh_username` }}",
@@ -96,6 +102,8 @@
     "https_proxy": "{{env `https_proxy`}}",
     "install_vagrant_key": true,
     "iso_checksum": "d6207fddf102c053dba05a29ed4770a3",
+    "iso_name": "Enterprise-R5-U9-Server-i386-dvd.iso",
+    "iso_path": "iso",
     "iso_url": "http://mirrors.dotsrc.org/oracle-linux/EL5/U9/i386/Enterprise-R5-U9-Server-i386-dvd.iso",
     "no_proxy": "{{env `no_proxy`}}",
     "rsync_proxy": "{{env `rsync_proxy`}}",
