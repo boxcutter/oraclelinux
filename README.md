@@ -19,7 +19,7 @@ Vagrant boxes using Packer.
 * [Oracle Enterprise Linux 5.11 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel511), VMware 278MB/VirtualBox 204MB
 * [Oracle Enterprise Linux 5.10 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel510), VMware 278MB/VirtualBox 203MB
 * [Oracle Enterprise Linux 5.9 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel59), VMware 277MB/VirtualBox 198MB
-* Oracle Enterprise Linux 5.8 (64-bit), VMware 261MB/VirtualBox 187MB
+* [Oracle Enterprise Linux 5.8 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel58), VMware 261MB/VirtualBox 187MB
 * [Oracle Enterprise Linux 5.7 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel57), VMware 263MB/VirtualBox 188MB
 
 32-bit boxes:
