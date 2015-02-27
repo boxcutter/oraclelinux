@@ -6,7 +6,7 @@ BOX_NAME=$1
 BOX_SUFFIX=$2
 VERSION=$3
 
-ATLAS_URI=https://atlas.hashicorp.com/api/v1/box/${ATLAS_USERNAME}
+ATLAS_URI=https://atlas.hashicorp.com/api/v1/box/${BOX_CUTTER_ATLAS_USERNAME}
 
 callGETService() {
     local uri=$1
@@ -20,7 +20,7 @@ mkdir -p ${COMM_FILE_DIR}
 COMM_FILE=${COMM_FILE_DIR}/atlas_comm.json
 
 echo "==> Checking for existing version"
-callGETService ${ATLAS_URI}/${BOX_NAME}?${ATLAS_ACCESS_TOKEN}
+callGETService ${ATLAS_URI}/${BOX_NAME}?${BOX_CUTTER_ATLAS_ACCESS_TOKEN}
 
 existing_version=$(jq -r ".versions[] | select(.version == \"${VERSION}\") | .version" < ${COMM_FILE})
 
@@ -92,7 +92,7 @@ version_json=$(
     }"
 )
 
-token_param="access_token=${ATLAS_ACCESS_TOKEN}"
+token_param="access_token=${BOX_CUTTER_ATLAS_ACCESS_TOKEN}"
 echo ${version_json}
 if [ -z "${existing_version}" ]; then
   echo "==> none found; creating"
