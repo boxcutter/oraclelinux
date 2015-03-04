@@ -9,5 +9,6 @@ tmp
 *.swp
 Makefile.local
 box/
+.boxtest/
 
 .DS_Store

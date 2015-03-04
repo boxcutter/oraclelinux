@@ -1,7 +1,9 @@
 #!/bin/bash -eux
 
 create_vagrantfile_linux() {
-cat << EOF > $tmp_path/Vagrantfile
+echo Writing Vagrantfile to $tmp_path/Vagrantfile
+( (vagrant plugin list | grep vagrant-serverspec) && echo "vagrant-serverspec installed" ) || vagrant plugin install vagrant-serverspec
+cat <<EOF > $tmp_path/Vagrantfile
 Vagrant.configure('2') do |config|
 config.vm.box = '$box_name'
 
@@ -23,7 +25,7 @@ test_src_path=$4
 
 box_filename=$(basename "${box_path}")
 box_name=${box_filename%.*}
-tmp_path=/tmp/boxtest
+tmp_path=$(pwd)/.boxtest
 
 rm -rf ${tmp_path}
 
