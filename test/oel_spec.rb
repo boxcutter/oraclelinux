@@ -12,7 +12,9 @@ describe 'box' do
   vbox_string = command("dmesg | grep VirtualBox").stdout
   has_vbox = vbox_string.include? 'VirtualBox'
   it 'should have single-request-reopen on virtualbox', :if => has_vbox do
-    expect(file('/etc/resolv.conf').content).to match /single-request-reopen/
+    if file('/redhat/release').content.scan(/(release 5) | (release 6)/)
+      expect(file('/etc/resolv.conf').content).to match /single-request-reopen/
+    end
   end
 
   # https://www.chef.io/blog/2015/02/26/bento-box-update-for-centos-and-fedora/
