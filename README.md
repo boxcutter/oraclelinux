@@ -49,6 +49,17 @@ A GNU Make `Makefile` drives the process via the following targets:
     make list   # Print out individual targets
     make clean  # Clean up build detritus
 
+To build one particular box, e.g. `oel66`,
+for just one provider, e.g. VirtualBox,
+first run `make list` subcommand:
+
+    make list
+
+This command prints the list of available boxes.
+Then you can build one particular box for choosen provider:
+
+    make virtualbox/oel66
+    
 ### Proxy Settings
 
 The templates respect the following network proxy environment variables
