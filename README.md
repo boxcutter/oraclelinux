@@ -9,29 +9,29 @@ Vagrant boxes using Packer.
 
 64-bit boxes:
 
-* [Oracle Enterprise Linux 7.0 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel70), VirtualBox 462MB/Parallels 399MB
-* [Oracle Enterprise Linux 7.0 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel70-desktop), VMware 1.0GB/VirtualBox 940MB/Parallels 925MB
-* [Oracle Enterprise Linux 6.6 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel66), VMware 576MB/VirtualBox 504MB/Parallels 519MB
-* [Oracle Enterprise Linux 6.6 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel66-desktop), VMware 1.2GB/VirtualBox 1.2GB/Parallels 1.2GB
-* [Oracle Enterprise Linux 6.5 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel65), VMware 551MB/VirtualBox 492MB
-* [Oracle Enterprise Linux 6.5 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel65-desktop), VMware 1.2GB/VirtualBox 1.1GB
-* [Oracle Enterprise Linux 6.4 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel64), VMware 499MB/VirtualBox 434MB
-* [Oracle Enterprise Linux 5.11 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel511), VMware 278MB/VirtualBox 204MB
-* [Oracle Enterprise Linux 5.10 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel510), VMware 278MB/VirtualBox 203MB
-* [Oracle Enterprise Linux 5.9 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel59), VMware 277MB/VirtualBox 198MB
-* [Oracle Enterprise Linux 5.8 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel58), VMware 261MB/VirtualBox 187MB
-* [Oracle Enterprise Linux 5.7 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel57), VMware 263MB/VirtualBox 188MB
+* [Oracle Enterprise Linux 7.0 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel70)
+* [Oracle Enterprise Linux 7.0 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel70-desktop)
+* [Oracle Enterprise Linux 6.6 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel66)
+* [Oracle Enterprise Linux 6.6 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel66-desktop)
+* [Oracle Enterprise Linux 6.5 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel65)
+* [Oracle Enterprise Linux 6.5 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel65-desktop)
+* [Oracle Enterprise Linux 6.4 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel64)
+* [Oracle Enterprise Linux 5.11 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel511)
+* [Oracle Enterprise Linux 5.10 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel510)
+* [Oracle Enterprise Linux 5.9 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel59)
+* [Oracle Enterprise Linux 5.8 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel58)
+* [Oracle Enterprise Linux 5.7 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel57)
 
 32-bit boxes:
 
-* [Oracle Enterprise Linux 6.6 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel66-i386), VMware 500MB/VirtualBox 441MB/Parallels 478MB
-* [Oracle Enterprise Linux 6.5 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel65-i386), VMware 484MB/VirtualBox 415MB
-* [Oracle Enterprise Linux 6.4 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel64-i386), VMware 427MB/VirtualBox 392MB
-* [Oracle Enterprise Linux 5.11 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel511-i386), VMware 268MB/VirtualBox 192MB
-* [Oracle Enterprise Linux 5.10 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel510-i386), VMware 267MB/VirtualBox 192MB
-* [Oracle Enterprise Linux 5.9 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel59-i386), VMware 266MB/VirtualBox 186MB
-* [Oracle Enterprise Linux 5.8 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel58-i386), VMware 252MB/VirtualBox 177MB
-* [Oracle Enterprise Linux 5.7 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel57-i386), VMware 253MB/VirtualBox 178MB
+* [Oracle Enterprise Linux 6.6 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel66-i386)
+* [Oracle Enterprise Linux 6.5 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel65-i386)
+* [Oracle Enterprise Linux 6.4 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel64-i386)
+* [Oracle Enterprise Linux 5.11 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel511-i386)
+* [Oracle Enterprise Linux 5.10 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel510-i386)
+* [Oracle Enterprise Linux 5.9 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel59-i386)
+* [Oracle Enterprise Linux 5.8 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel58-i386)
+* [Oracle Enterprise Linux 5.7 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel57-i386)
 
 ## Building the Vagrant boxes
 
@@ -120,33 +120,22 @@ The variable `UPDATE` can be used to perform OS patch management.  The
 default is to not apply OS updates by default.  When `UPDATE := true`,
 the latest OS updates will be applied.
 
-Another use for `Makefile.local` is to override the default locations
-for the Oracle Enterprise Linux install ISO files.
+The variable `PACKER` can be used to set the path to the packer binary.
+The default is `packer`.
 
-For Oracle Enterprise Linux, the ISO path variables are:
+The variable `ISO_PATH` can be used to set the path to a directory with
+OS install images.  This override is commonly used to speed up Packer
+builds by pointing at pre-downloaded ISOs instead of using the default
+download Internet URLs.
 
-* ORACLE70_X86_64
-* ORACLE66_X86_64
-* ORACLE65_X86_64
-* ORACLE64_X86_64
-* ORACLE511_X86_64
-* ORACLE510_X86_64
-* ORACLE59_X86_64
-* ORACLE58_X86_64
-* ORACLE57_X86_64
-* ORACLE66_I386
-* ORACLE65_I386
-* ORACLE64_I386
-* ORACLE511_I386
-* ORACLE510_I386
-* ORACLE59_I386
-* ORACLE58_I386
-* ORACLE57_I386
+The variables `SSH_USERNAME` and `SSH_PASSWORD` can be used to change
+the default name & password from the default `vagrant`/`vagrant`
+respectively.
 
-This override is commonly used to speed up Packer builds by
-pointing at pre-downloaded ISOs instead of using the default
-download Internet URLs:
-`ORACLE66_X86_64 := file:///Volumes/OL6/OracleLinux-R6-U6-Server-x86_64-dvd.iso`
+The variable `INSTALL_VAGRANT_KEY` can be set to turn off installation
+of the default insecure vagrant key when the image is being used
+outside of vagrant.  Set `INSTALL_VAGRANT_KEY := false`, the default
+is true.
 
 ### Acknowledgments
 
