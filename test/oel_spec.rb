@@ -13,7 +13,9 @@ describe 'box' do
   has_vbox = vbox_string.include? 'VirtualBox'
   it 'should have single-request-reopen on virtualbox', :if => has_vbox do
     if file('/redhat/release').content.scan(/(release 5) | (release 6)/)
-      expect(file('/etc/resolv.conf').content).to match /single-request-reopen/
+      if ! file('/etc/gdm/custom.conf').file? 
+        expect(file('/etc/resolv.conf').content).to match /single-request-reopen/
+      end
     end
   end
 
