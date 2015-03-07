@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.12 (2015-03-05)
+
+* Upgrade VirtualBox Guest Additions to 4.3.24
+* Fix issues with selinux not being disabled on some versions
+
 ## 1.0.11 (2015-02-26)
 
 * Use the SATA HDD controller for faster disk IO speeds on VirtualBox
