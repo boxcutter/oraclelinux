@@ -152,6 +152,6 @@ is true.
 
 ### Acknowledgments
 
-[SmartyStreets](http://www.smartystreets.com) is providing basebox hosting for the box-cutter project.
+[SmartyStreets](http://www.smartystreets.com) is providing basebox hosting for the boxcutter project.
 
 ![Powered By SmartyStreets](https://smartystreets.com/resources/images/smartystreets-flat.png)
