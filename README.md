@@ -9,6 +9,8 @@ Vagrant boxes using Packer.
 
 64-bit boxes:
 
+* [Oracle Enterprise Linux 7.1 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel71)
+* [Oracle Enterprise Linux 7.1 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel71-desktop)
 * [Oracle Enterprise Linux 7.0 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel70)
 * [Oracle Enterprise Linux 7.0 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel70-desktop)
 * [Oracle Enterprise Linux 6.6 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel66)
