@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.15 (2015-06-03)
+
+* Upgrade VirtualBox Guest Additions to 4.3.28
+* Upgrade Parallels tools to 10.2.1
+
 ## 1.0.14 (2015-04-09)
 
 * Add Oracle Enterprise Linux 7.1 templates
