@@ -5,7 +5,7 @@
         "<tab><wait> <wait>text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks7-desktop.cfg<enter>"
       ],
       "boot_wait": "20s",
-      "disk_size": 40960,
+      "disk_size": 130048,
       "floppy_files": [
         "floppy/vmware9.compat_dcache.h.patch"
       ],
@@ -36,7 +36,7 @@
         "<tab><wait> <wait>text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks7-desktop.cfg<enter>"
       ],
       "boot_wait": "20s",
-      "disk_size": 40960,
+      "disk_size": 130048,
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
       "guest_os_type": "Oracle_64",
       "hard_drive_interface": "sata",
@@ -64,7 +64,7 @@
       "boot_command": [
         "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort}}/ks7-desktop.cfg<enter>"
       ],
-      "disk_size": 40960,
+      "disk_size": 130048,
       "guest_os_type": "redhat",
       "http_directory": "http",
       "iso_checksum": "{{ user `iso_checksum` }}",
