@@ -127,7 +127,7 @@
     "headless": "",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
-    "install_vagrant_key": true,
+    "install_vagrant_key": "true",
     "iso_checksum": "8af2121088c7e6f5ebdb6d5900403240",
     "iso_name": "Enterprise-R5-U11-Server-x86_64-dvd.iso",
     "iso_path": "iso",

@@ -129,7 +129,7 @@
     "headless": "",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
-    "install_vagrant_key": true,
+    "install_vagrant_key": "true",
     "iso_checksum": "fa9666448e8a24ad6a4c7203575b66532fa833d7",
     "iso_name": "OracleLinux-R7-U1-Server-x86_64-dvd.iso",
     "iso_path": "iso",

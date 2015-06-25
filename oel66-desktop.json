@@ -129,7 +129,7 @@
     "headless": "",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
-    "install_vagrant_key": true,
+    "install_vagrant_key": "true",
     "iso_checksum": "5738f10a506d3630edfd297ef179b553091c6a48",
     "iso_name": "OracleLinux-R6-U6-Server-x86_64-dvd.iso",
     "iso_path": "iso",
