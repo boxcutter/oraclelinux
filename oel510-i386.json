@@ -35,7 +35,6 @@
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
       "guest_os_type": "RedHat",
       "headless": "{{ user `headless` }}",
-      "hard_drive_interface": "sata",
       "http_directory": "http",
       "iso_checksum": "{{ user `iso_checksum` }}",
       "iso_checksum_type": "md5",
