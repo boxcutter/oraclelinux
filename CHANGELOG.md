@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.0 (2015-07-22)
+
+* Upgrade VirtualBox Guest Additions to 5.0.0
+
 ## 1.0.16 (2015-06-18)
 
 * Upgrade VMware Tool to 9.9.3 for VMware 7.1.2
