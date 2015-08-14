@@ -13,6 +13,8 @@ Vagrant boxes using Packer.
 * [Oracle Enterprise Linux 7.1 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel71-desktop)
 * [Oracle Enterprise Linux 7.0 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel70)
 * [Oracle Enterprise Linux 7.0 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel70-desktop)
+* [Oracle Enterprise Linux 6.7 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel67)
+* [Oracle Enterprise Linux 6.7 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel67-desktop)
 * [Oracle Enterprise Linux 6.6 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel66)
 * [Oracle Enterprise Linux 6.6 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel66-desktop)
 * [Oracle Enterprise Linux 6.5 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel65)
@@ -26,6 +28,7 @@ Vagrant boxes using Packer.
 
 32-bit boxes:
 
+* [Oracle Enterprise Linux 6.7 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel67-i386)
 * [Oracle Enterprise Linux 6.6 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel66-i386)
 * [Oracle Enterprise Linux 6.5 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel65-i386)
 * [Oracle Enterprise Linux 6.4 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel64-i386)
