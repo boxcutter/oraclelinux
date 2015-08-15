@@ -1,6 +1,10 @@
 # Changelog
 
-## 2.0.1 
+## 2.0.2 (2015-08-15)
+
+* Add OEL 6.7 templates
+
+## 2.0.1 (2015-07-28)
 
 * Upgrade Parallels tools to 10.2.2
 
