@@ -1,6 +1,10 @@
 # Changelog
 
-## 2.0.2 (2015-08-15)
+## 2.0.3 (2015-08-16)
+
+* Upgrade VirtualBox Guest Additions to 5.0.2
+
+## 2.0.2 (2015-08-13)
 
 * Add OEL 6.7 templates
 
@@ -14,7 +18,7 @@
 
 ## 1.0.16 (2015-06-18)
 
-* Upgrade VMware Tool to 9.9.3 for VMware 7.1.2
+* Upgrade VMware Tools to 9.9.3 for VMware 7.1.2
 
 ## 1.0.15 (2015-06-03)
 
