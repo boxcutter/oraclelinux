@@ -57,7 +57,7 @@ create_description() {
 
     VIRTUALBOX_VERSION=$(virtualbox --help | head -n 1 | awk '{print $NF}')
     PARALLELS_VERSION=$(prlctl --version | awk '{print $3}')
-    VMWARE_VERSION=9.9.3
+    VMWARE_VERSION=10.0.0
 
     VMWARE_BOX_FILE=box/vmware/${BOX_NAME}${BOX_SUFFIX}
     VIRTUALBOX_BOX_FILE=box/virtualbox/${BOX_NAME}${BOX_SUFFIX}
