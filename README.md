@@ -40,16 +40,12 @@ Vagrant boxes using Packer.
 
 ## Building the Vagrant boxes
 
-To build all the boxes, you will need Packer and both VirtualBox, VMware
-Fusion, and Parallels Desktop for Mac installed.
-
-Parallels requires that the
-[Parallels Virtualization SDK for Mac](http://www.parallels.com/downloads/desktop)
-be installed as an additional preqrequisite.
+To build all the boxes, you will need Packer and both VirtualBox and  VMware
+Fusion.
 
 A GNU Make `Makefile` drives the process via the following targets:
 
-    make        # Build all the box types (VirtualBox, VMware & Parallels)
+    make        # Build all the box types (VirtualBox and VMware)
     make test   # Run tests against all the boxes
     make list   # Print out individual targets
     make clean  # Clean up build detritus
