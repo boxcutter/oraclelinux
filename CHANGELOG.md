@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.1 (2015-09-28)
+
+* Upgrade VirtualBox Guest Additions to 5.0.4
+* Add Docker templates
+* Remove Paralels provider
+
 ## 3.0.0 (2015-08-30)
 
 * Upgrade VMware tools to 10.0.0 for VMware Fusion 8
