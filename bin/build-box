@@ -44,7 +44,7 @@ args() {
   if [ -n "${only}" ]; then
     only="-only=${only}"      
   fi
-  packer_template=${3:-centos.json}
+  packer_template=${3:-oel.json}
 }
 
 # main
