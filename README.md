@@ -22,9 +22,6 @@ Vagrant boxes using Packer.
 * [Oracle Enterprise Linux 6.4 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel64)
 * [Oracle Enterprise Linux 5.11 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel511)
 * [Oracle Enterprise Linux 5.10 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel510)
-* [Oracle Enterprise Linux 5.9 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel59)
-* [Oracle Enterprise Linux 5.8 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel58)
-* [Oracle Enterprise Linux 5.7 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel57)
 
 32-bit boxes:
 
@@ -34,32 +31,63 @@ Vagrant boxes using Packer.
 * [Oracle Enterprise Linux 6.4 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel64-i386)
 * [Oracle Enterprise Linux 5.11 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel511-i386)
 * [Oracle Enterprise Linux 5.10 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel510-i386)
-* [Oracle Enterprise Linux 5.9 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel59-i386)
-* [Oracle Enterprise Linux 5.8 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel58-i386)
-* [Oracle Enterprise Linux 5.7 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel57-i386)
 
-## Building the Vagrant boxes
+## Building the Vagrant boxes with Packer
 
-To build all the boxes, you will need Packer and both VirtualBox and  VMware
-Fusion.
+To build all the boxes, you will need [VirtualBox](https://www.virtualbox.org/wiki/Downloads), 
+[VMware Fusion](https://www.vmware.com/products/fusion)/[VMware Workstation](https://www.vmware.com/products/workstation) and
+[Parallels](http://www.parallels.com/products/desktop/whats-new/) installed.
 
-A GNU Make `Makefile` drives the process via the following targets:
+Parallels requires that the
+[Parallels Virtualization SDK for Mac](http://www.parallels.com/downloads/desktop)
+be installed as an additional preqrequisite.
 
-    make        # Build all the box types (VirtualBox and VMware)
-    make test   # Run tests against all the boxes
-    make list   # Print out individual targets
-    make clean  # Clean up build detritus
+We make use of JSON files containing user variables to build specific versions of Ubuntu.
+You tell `packer` to use a specific user variable file via the `-var-file=` command line
+option.  This will override the default options on the core `oel.json` packer template,
+which builds Oracle Enteprise Linux 6.7 by default.
 
-To build one particular box, e.g. `oel66`,
-for just one provider, e.g. VirtualBox,
-first run `make list` subcommand:
+For example, to build Oracle Enterprise Linux 7.1, use the following:
 
-    make list
+    $ packer build -var-file=oel71.json oel.json
+    
+If you want to make boxes for a specific desktop virtualization platform, use the `-only`
+parameter.  For example, to build Oracle Enterprise Linux 7.1 for VirtualBox:
 
-This command prints the list of available boxes.
-Then you can build one particular box for choosen provider:
+    $ packer build -only=virtualbox-iso -var-file=oel71.json oel.json
 
-    make virtualbox/oel66
+The boxcutter templates currently support the following desktop virtualization strings:
+
+* `parallels-iso` - [Parallels](http://www.parallels.com/products/desktop/whats-new/) desktop virtualization (Requires the Pro Edition - Desktop edition won't work)
+* `virtualbox-iso` - [VirtualBox](https://www.virtualbox.org/wiki/Downloads) desktop virtualization
+* `vmware-iso` - [VMware Fusion](https://www.vmware.com/products/fusion) or [VMware Workstation](https://www.vmware.com/products/workstation) desktop virtualization
+
+## Building the Vagrant boxes with the box script
+
+We've also provided a wrapper script `bin/box` for ease of use, so alternatively, you can use
+the following to build Oracle Enterprise Linux 7.1 for all providers:
+
+    $ bin/box build oel71
+
+Or if you just want to build Oracle Enterprise Linux 7.1 for VirtualBox:
+
+    $ bin/box build oel71 virtualbox
+
+## Building the Vagrant boxes with the Makefile
+
+A GNU Make `Makefile` drives a complete basebox creation pipeline with the following stages:
+
+* `build` - Create basebox `*.box` files
+* `assure` - Verify that the basebox `*.box` files produced function correctly
+* `deliver` - Upload `*.box` files to [Artifactory](https://www.jfrog.com/confluence/display/RTF/Vagrant+Repositories), [Atlas](https://atlas.hashicorp.com/) or an [S3 bucket](https://aws.amazon.com/s3/)
+
+The pipeline is driven via the following targets, making it easy for you to include them
+in your favourite CI tool:
+
+    make build   # Build all available box types
+    make assure  # Run tests against all the boxes
+    make deliver # Upload box artifacts to a repository
+    make clean   # Clean up build detritus
     
 ### Proxy Settings
 
