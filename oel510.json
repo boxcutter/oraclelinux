@@ -3,7 +3,7 @@
   "vm_name": "oel510",
   "cpus": "1",
   "disk_size": "65536",
-  "iso_checksum": "1aa0a1246b1a55108abf20aa2bcac00e",
+  "iso_checksum": "51218ed472cd9de823c7676360348722c76a0a9b",
   "iso_checksum_type": "sha1",
   "iso_name": "Enterprise-R5-U10-Server-x86_64-dvd.iso",
   "iso_url": "http://mirrors.dotsrc.org/oracle-linux/EL5/U10/x86_64/Enterprise-R5-U10-Server-x86_64-dvd.iso",
