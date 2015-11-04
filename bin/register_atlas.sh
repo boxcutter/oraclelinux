@@ -87,6 +87,7 @@ create_description() {
 
     VMWARE_BOX_FILE=box/vmware/${BOX_NAME}${BOX_SUFFIX}
     VIRTUALBOX_BOX_FILE=box/virtualbox/${BOX_NAME}${BOX_SUFFIX}
+    PARALLELS_BOX_FILE=box/parallels/${BOX_NAME}${BOX_SUFFIX}
     DESCRIPTION="Oracle Enterprise Linux ${PRETTY_VERSION}${DESKTOP_STRING} (${BIT_STRING})${DOCKER_STRING}
 
 "
