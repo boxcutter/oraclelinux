@@ -2,9 +2,9 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-    config.vm.define "vagrant-oel66-desktop"
-    config.vm.box = "oel66-desktop"
- 
+    config.vm.define "vagrant-oraclelinux65-desktop"
+    config.vm.box = "oraclelinux65-desktop"
+
     config.vm.provider :virtualbox do |v, override|
         v.gui = true
         v.customize ["modifyvm", :id, "--memory", 1024]

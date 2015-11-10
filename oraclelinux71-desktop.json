@@ -1,6 +1,6 @@
 {
-  "_comment": "Build with `packer build -var-file=oel71-desktop.json oel.json`",
-  "vm_name": "oel71-desktop",
+  "_comment": "Build with `packer build -var-file=oraclelinux71-desktop.json oraclelinux.json`",
+  "vm_name": "oraclelinux71-desktop",
   "cpus": "1",
   "desktop": "true",
   "disk_size": "130048",
@@ -10,6 +10,6 @@
   "iso_url": "http://mirrors.dotsrc.org/oracle-linux/OL7/u1/x86_64/OracleLinux-R7-U1-Server-x86_64-dvd.iso",
   "kickstart": "ks7-desktop.cfg",
   "memory": "1024",
-  "vagrantfile_template": "tpl/vagrantfile-oel71-desktop.tpl",
+  "vagrantfile_template": "tpl/vagrantfile-oraclelinux71-desktop.tpl",
   "parallels_guest_os_type": "rhel7"
 }

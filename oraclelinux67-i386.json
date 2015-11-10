@@ -1,6 +1,6 @@
 {
-  "_comment": "Build with `packer build -var-file=oel67-i386.json oel.json`",
-  "vm_name": "oel67-i386",
+  "_comment": "Build with `packer build -var-file=oraclelinux67-i386.json oraclelinux.json`",
+  "vm_name": "oraclelinux67-i386",
   "cpus": "1",
   "disk_size": "65536",
   "iso_checksum": "f35c749fbdd7bf0fb0a676c477728d0b864e4d69",

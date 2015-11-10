@@ -1,4 +1,4 @@
-ISO_PATH := file:///Volumes/Thunder/software/oel
+ISO_PATH := file:///Volumes/Thunder/software/oraclelinux
 
 VIRTUALBOX_VERSION := $(shell virtualbox --help | head -n 1 | awk '{print $$NF}')
 VMWARE_VERSION := 10.0.0

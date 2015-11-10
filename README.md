@@ -1,40 +1,40 @@
-# Packer templates for Oracle Enterprise Linux
+# Packer templates for Oracle Linux
 
 ### Overview
 
-This repository contains templates for Oracle Enterprise Linux that can create
+This repository contains templates for Oracle Linux that can create
 Vagrant boxes using Packer.
 
 ## Current Boxes
 
 64-bit boxes:
 
-* [Oracle Enterprise Linux 7.1 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel71)
-* [Oracle Enterprise Linux 7.1 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel71-desktop)
-* [Oracle Enterprise Linux 7.0 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel70)
-* [Oracle Enterprise Linux 7.0 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel70-desktop)
-* [Oracle Enterprise Linux 6.7 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel67)
-* [Oracle Enterprise Linux 6.7 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel67-desktop)
-* [Oracle Enterprise Linux 6.6 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel66)
-* [Oracle Enterprise Linux 6.6 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel66-desktop)
-* [Oracle Enterprise Linux 6.5 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel65)
-* [Oracle Enterprise Linux 6.5 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel65-desktop)
-* [Oracle Enterprise Linux 6.4 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel64)
-* [Oracle Enterprise Linux 5.11 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel511)
-* [Oracle Enterprise Linux 5.10 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel510)
+* [Oracle Linux 7.1 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oraclelinux71)
+* [Oracle Linux 7.1 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oraclelinux71-desktop)
+* [Oracle Linux 7.0 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oraclelinux70)
+* [Oracle Linux 7.0 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oraclelinux70-desktop)
+* [Oracle Linux 6.7 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oraclelinux67)
+* [Oracle Linux 6.7 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oraclelinux67-desktop)
+* [Oracle Linux 6.6 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oraclelinux66)
+* [Oracle Linux 6.6 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oraclelinux66-desktop)
+* [Oracle Linux 6.5 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oraclelinux65)
+* [Oracle Linux 6.5 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oraclelinux65-desktop)
+* [Oracle Linux 6.4 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oraclelinux64)
+* [Oracle Linux 5.11 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oraclelinux511)
+* [Oracle Linux 5.10 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oraclelinux510)
 
 32-bit boxes:
 
-* [Oracle Enterprise Linux 6.7 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel67-i386)
-* [Oracle Enterprise Linux 6.6 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel66-i386)
-* [Oracle Enterprise Linux 6.5 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel65-i386)
-* [Oracle Enterprise Linux 6.4 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel64-i386)
-* [Oracle Enterprise Linux 5.11 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel511-i386)
-* [Oracle Enterprise Linux 5.10 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oel510-i386)
+* [Oracle Linux 6.7 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oraclelinux67-i386)
+* [Oracle Linux 6.6 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oraclelinux66-i386)
+* [Oracle Linux 6.5 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oraclelinux65-i386)
+* [Oracle Linux 6.4 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oraclelinux64-i386)
+* [Oracle Linux 5.11 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oraclelinux511-i386)
+* [Oracle Linux 5.10 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/oraclelinux510-i386)
 
 ## Building the Vagrant boxes with Packer
 
-To build all the boxes, you will need [VirtualBox](https://www.virtualbox.org/wiki/Downloads), 
+To build all the boxes, you will need [VirtualBox](https://www.virtualbox.org/wiki/Downloads),
 [VMware Fusion](https://www.vmware.com/products/fusion)/[VMware Workstation](https://www.vmware.com/products/workstation) and
 [Parallels](http://www.parallels.com/products/desktop/whats-new/) installed.
 
@@ -44,17 +44,17 @@ be installed as an additional preqrequisite.
 
 We make use of JSON files containing user variables to build specific versions of Ubuntu.
 You tell `packer` to use a specific user variable file via the `-var-file=` command line
-option.  This will override the default options on the core `oel.json` packer template,
-which builds Oracle Enteprise Linux 6.7 by default.
+option.  This will override the default options on the core `oraclelinux.json` packer template,
+which builds Oracle Linux 6.7 by default.
 
-For example, to build Oracle Enterprise Linux 7.1, use the following:
+For example, to build Oracle Linux 7.1, use the following:
 
-    $ packer build -var-file=oel71.json oel.json
-    
+    $ packer build -var-file=oraclelinux71.json oraclelinux.json
+
 If you want to make boxes for a specific desktop virtualization platform, use the `-only`
-parameter.  For example, to build Oracle Enterprise Linux 7.1 for VirtualBox:
+parameter.  For example, to build Oracle Linux 7.1 for VirtualBox:
 
-    $ packer build -only=virtualbox-iso -var-file=oel71.json oel.json
+    $ packer build -only=virtualbox-iso -var-file=oraclelinux71.json oraclelinux.json
 
 The boxcutter templates currently support the following desktop virtualization strings:
 
@@ -65,13 +65,13 @@ The boxcutter templates currently support the following desktop virtualization s
 ## Building the Vagrant boxes with the box script
 
 We've also provided a wrapper script `bin/box` for ease of use, so alternatively, you can use
-the following to build Oracle Enterprise Linux 7.1 for all providers:
+the following to build Oracle Linux 7.1 for all providers:
 
-    $ bin/box build oel71
+    $ bin/box build oraclelinux71
 
-Or if you just want to build Oracle Enterprise Linux 7.1 for VirtualBox:
+Or if you just want to build Oracle Linux 7.1 for VirtualBox:
 
-    $ bin/box build oel71 virtualbox
+    $ bin/box build oraclelinux71 virtualbox
 
 ## Building the Vagrant boxes with the Makefile
 
@@ -88,7 +88,7 @@ in your favourite CI tool:
     make assure  # Run tests against all the boxes
     make deliver # Upload box artifacts to a repository
     make clean   # Clean up build detritus
-    
+
 ### Proxy Settings
 
 The templates respect the following network proxy environment variables
@@ -116,7 +116,7 @@ newly-built box with vagrant and for logging in using just one command to
 do exploratory testing.  For example, to do exploratory testing
 on the VirtualBox training environmnet, run the following command:
 
-    make ssh-box/virtualbox/oel65-nocm.box
+    make ssh-box/virtualbox/oraclelinux65-nocm.box
 
 Upon logout `make ssh-*` will automatically de-register the box as well.
 

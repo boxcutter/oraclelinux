@@ -29,7 +29,7 @@ args() {
         usage
         exit 1
     fi
-    
+
     BOX_NAME=$1
     BOX_SUFFIX=$2
     VERSION=$3
@@ -49,7 +49,7 @@ get_short_description() {
     if [[ "${BOX_NAME}" =~ desktop ]]; then
         DESKTOP_STRING=" Desktop"
     fi
-    RAW_VERSION=${BOX_NAME#oel}
+    RAW_VERSION=${BOX_NAME#oraclelinux}
     RAW_VERSION=${RAW_VERSION%-i386}
     RAW_VERSION=${RAW_VERSION%-docker}
     RAW_VERSION=${RAW_VERSION%-desktop}
@@ -58,7 +58,7 @@ get_short_description() {
     VIRTUALBOX_VERSION=$(virtualbox --help | head -n 1 | awk '{print $NF}')
     PARALLELS_VERSION=$(prlctl --version | awk '{print $3}')
     VMWARE_VERSION=10.0.1
-    SHORT_DESCRIPTION="Oracle Enterprise Linux ${PRETTY_VERSION}${DESKTOP_STRING} (${BIT_STRING})${DOCKER_STRING}"
+    SHORT_DESCRIPTION="Oracle Linux ${PRETTY_VERSION}${DESKTOP_STRING} (${BIT_STRING})${DOCKER_STRING}"
 }
 create_description() {
     if [[ "${BOX_NAME}" =~ i386 ]]; then
@@ -74,7 +74,7 @@ create_description() {
     if [[ "${BOX_NAME}" =~ desktop ]]; then
         DESKTOP_STRING=" Desktop"
     fi
-    RAW_VERSION=${BOX_NAME#oel}
+    RAW_VERSION=${BOX_NAME#oraclelinux}
     RAW_VERSION=${RAW_VERSION%-i386}
     RAW_VERSION=${RAW_VERSION%-docker}
     RAW_VERSION=${RAW_VERSION%-desktop}
@@ -87,7 +87,7 @@ create_description() {
     VMWARE_BOX_FILE=box/vmware/${BOX_NAME}${BOX_SUFFIX}
     VIRTUALBOX_BOX_FILE=box/virtualbox/${BOX_NAME}${BOX_SUFFIX}
     PARALLELS_BOX_FILE=box/parallels/${BOX_NAME}${BOX_SUFFIX}
-    DESCRIPTION="Oracle Enterprise Linux ${PRETTY_VERSION}${DESKTOP_STRING} (${BIT_STRING})${DOCKER_STRING}
+    DESCRIPTION="Oracle Linux ${PRETTY_VERSION}${DESKTOP_STRING} (${BIT_STRING})${DOCKER_STRING}
 
 "
     if [[ -e ${VMWARE_BOX_FILE} ]]; then
@@ -178,7 +178,7 @@ main() {
        JSON_RESULT=$(curl -s -f -X PUT "${ATLAS_API_URL}/box/${BOX_CUTTER_ATLAS_USERNAME}/${BOX_NAME}/version/${VERSION}" -d "access_token=${BOX_CUTTER_ATLAS_ACCESS_TOKEN}" -d "version[description]=${DESCRIPTION}" || true)
     fi
 
-    BOXCUTTER_BASE_URL=http://cdn.boxcutter.io/oel
+    BOXCUTTER_BASE_URL=http://cdn.boxcutter.io/oraclelinux
     if [[ -e ${VMWARE_BOX_FILE} ]]; then
         PROVIDER=vmware_desktop
         PROVIDER_URL=${BOXCUTTER_BASE_URL}/vmware${VMWARE_VERSION}/${BOX_NAME}${BOX_SUFFIX}
