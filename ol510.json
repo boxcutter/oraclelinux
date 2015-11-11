@@ -1,6 +1,6 @@
 {
-  "_comment": "Build with `packer build -var-file=oel510.json oel.json`",
-  "vm_name": "oel510",
+  "_comment": "Build with `packer build -var-file=ol510.json oraclelinux.json`",
+  "vm_name": "ol510",
   "cpus": "1",
   "disk_size": "65536",
   "iso_checksum": "51218ed472cd9de823c7676360348722c76a0a9b",

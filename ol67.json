@@ -1,6 +1,6 @@
 {
-  "_comment": "Build with `packer build -var-file=oel67.json oel.json`",
-  "vm_name": "oel67",
+  "_comment": "Build with `packer build -var-file=ol67.json oraclelinux.json`",
+  "vm_name": "ol67",
   "cpus": "1",
   "disk_size": "65536",
   "iso_checksum": "dd7231b378f23e2e846ac78b0c5d8974a23631d5",

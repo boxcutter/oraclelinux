@@ -2,9 +2,9 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-    config.vm.define "vagrant-oel70-desktop"
-    config.vm.box = "oel70-desktop"
- 
+    config.vm.define "vagrant-ol71-desktop"
+    config.vm.box = "ol71-desktop"
+
     config.vm.provider :virtualbox do |v, override|
         v.gui = true
         v.customize ["modifyvm", :id, "--memory", 1024]

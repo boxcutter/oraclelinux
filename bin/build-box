@@ -42,9 +42,9 @@ args() {
     only=parallels-iso
   fi
   if [ -n "${only}" ]; then
-    only="-only=${only}"      
+    only="-only=${only}"
   fi
-  packer_template=${3:-oel.json}
+  packer_template=${3:-oraclelinux.json}
 }
 
 # main

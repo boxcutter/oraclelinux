@@ -15,7 +15,7 @@ else
 endif
 
 BUILDER_TYPES ?= vmware virtualbox parallels
-TEMPLATE_FILENAMES := $(filter-out oel.json,$(wildcard *.json))
+TEMPLATE_FILENAMES := $(filter-out oraclelinux.json,$(wildcard *.json))
 BOX_NAMES := $(basename $(TEMPLATE_FILENAMES))
 BOX_FILENAMES := $(TEMPLATE_FILENAMES:.json=$(BOX_SUFFIX))
 VMWARE_BOX_DIR ?= box/vmware

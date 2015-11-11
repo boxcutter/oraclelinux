@@ -1,14 +1,13 @@
 {
-  "_comment": "Build with `packer build -var-file=oel70-docker.json oel.json`",
-  "vm_name": "oel70-docker",
+  "_comment": "Build with `packer build -var-file=ol70.json oraclelinux.json`",
+  "vm_name": "ol70",
   "cpus": "1",
   "disk_size": "65536",
-  "docker": "true",
   "iso_checksum": "74bcac408a164535ecd483503244e312a292bf84",
   "iso_checksum_type": "sha1",
   "iso_name": "OracleLinux-R7-U0-Server-x86_64-dvd.iso",
   "iso_url": "http://mirrors.dotsrc.org/oracle-linux/OL7/u0/x86_64/OracleLinux-R7-U0-Server-x86_64-dvd.iso",
   "kickstart": "ks7.cfg",
-  "memory": "1024",
+  "memory": "512",
   "parallels_guest_os_type": "rhel7"
 }

@@ -1,14 +1,12 @@
 {
-  "_comment": "Build with `packer build -var-file=oel65-desktop.json oel.json`",
-  "vm_name": "oel65-desktop",
+  "_comment": "Build with `packer build -var-file=ol65.json oraclelinux.json`",
+  "vm_name": "ol65",
   "cpus": "1",
-  "desktop": "true",
-  "disk_size": "130048",
+  "disk_size": "65536",
   "iso_checksum": "a65041fbe0ba67e3ff6f5f93804a8f47d5b5f132",
   "iso_checksum_type": "sha1",
   "iso_name": "OracleLinux-R6-U5-Server-x86_64-dvd.iso",
   "iso_url": "http://mirrors.dotsrc.org/oracle-linux/OL6/U5/x86_64/OracleLinux-R6-U5-Server-x86_64-dvd.iso",
-  "kickstart": "ks6-desktop.cfg",
-  "memory": "1024",
-  "vagrantfile_template": "tpl/vagrantfile-oel65-desktop.tpl"
+  "kickstart": "ks6.cfg",
+  "memory": "512"
 }

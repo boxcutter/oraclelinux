@@ -1,15 +1,14 @@
 {
-  "_comment": "Build with `packer build -var-file=oel70-desktop.json oel.json`",
-  "vm_name": "oel70-desktop",
+  "_comment": "Build with `packer build -var-file=ol70-docker.json oraclelinux.json`",
+  "vm_name": "ol70-docker",
   "cpus": "1",
-  "desktop": "true",
-  "disk_size": "130048",
+  "disk_size": "65536",
+  "docker": "true",
   "iso_checksum": "74bcac408a164535ecd483503244e312a292bf84",
   "iso_checksum_type": "sha1",
   "iso_name": "OracleLinux-R7-U0-Server-x86_64-dvd.iso",
   "iso_url": "http://mirrors.dotsrc.org/oracle-linux/OL7/u0/x86_64/OracleLinux-R7-U0-Server-x86_64-dvd.iso",
-  "kickstart": "ks7-desktop.cfg",
+  "kickstart": "ks7.cfg",
   "memory": "1024",
-  "vagrantfile_template": "tpl/vagrantfile-oel70-desktop.tpl",
   "parallels_guest_os_type": "rhel7"
 }
