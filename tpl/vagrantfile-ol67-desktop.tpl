@@ -2,8 +2,8 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-    config.vm.define "vagrant-oraclelinux66-desktop"
-    config.vm.box = "oraclelinux66-desktop"
+    config.vm.define "vagrant-ol67-desktop"
+    config.vm.box = "ol67-desktop"
 
     config.vm.provider :virtualbox do |v, override|
         v.gui = true

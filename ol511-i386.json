@@ -1,6 +1,6 @@
 {
-  "_comment": "Build with `packer build -var-file=oraclelinux511-i386.json oraclelinux.json`",
-  "vm_name": "oraclelinux511-i386",
+  "_comment": "Build with `packer build -var-file=ol511-i386.json oraclelinux.json`",
+  "vm_name": "ol511-i386",
   "cpus": "1",
   "disk_size": "65536",
   "iso_checksum": "e60962c4ebf8920bbd828efe32a78a7cc8f28e3b",

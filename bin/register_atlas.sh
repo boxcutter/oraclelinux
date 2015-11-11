@@ -49,7 +49,7 @@ get_short_description() {
     if [[ "${BOX_NAME}" =~ desktop ]]; then
         DESKTOP_STRING=" Desktop"
     fi
-    RAW_VERSION=${BOX_NAME#oraclelinux}
+    RAW_VERSION=${BOX_NAME#ol}
     RAW_VERSION=${RAW_VERSION%-i386}
     RAW_VERSION=${RAW_VERSION%-docker}
     RAW_VERSION=${RAW_VERSION%-desktop}
@@ -75,7 +75,7 @@ create_description() {
     if [[ "${BOX_NAME}" =~ desktop ]]; then
         DESKTOP_STRING=" Desktop"
     fi
-    RAW_VERSION=${BOX_NAME#oraclelinuxs}
+    RAW_VERSION=${BOX_NAME#ol}
     RAW_VERSION=${RAW_VERSION%-i386}
     RAW_VERSION=${RAW_VERSION%-docker}
     RAW_VERSION=${RAW_VERSION%-desktop}

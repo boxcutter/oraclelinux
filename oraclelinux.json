@@ -165,7 +165,7 @@
     "vagrantfile_template": "",
     "version": "0.1.0",
     "virtualbox_guest_os_type": "Oracle_64",
-    "vm_name": "oraclelinux67",
+    "vm_name": "ol67",
     "vmware_guest_os_type": "oraclelinux-64"
   }
 }

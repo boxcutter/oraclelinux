@@ -1,6 +1,6 @@
 {
-  "_comment": "Build with `packer build -var-file=oraclelinux66.json oraclelinux.json`",
-  "vm_name": "oraclelinux66",
+  "_comment": "Build with `packer build -var-file=ol66.json oraclelinux.json`",
+  "vm_name": "ol66",
   "cpus": "1",
   "disk_size": "65536",
   "iso_checksum": "5738f10a506d3630edfd297ef179b553091c6a48",

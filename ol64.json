@@ -1,6 +1,6 @@
 {
-  "_comment": "Build with `packer build -var-file=oraclelinux64.json oraclelinux.json`",
-  "vm_name": "oraclelinux64",
+  "_comment": "Build with `packer build -var-file=ol64.json oraclelinux.json`",
+  "vm_name": "ol64",
   "cpus": "1",
   "disk_size": "65536",
   "iso_checksum": "4ecb72ade0186afe2f95ffc8273fc146e177e2f9",
