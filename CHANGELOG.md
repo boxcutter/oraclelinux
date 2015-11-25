@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.4 (2015-11-25)
+
+* Upgrade VirtualBox guest additions to version 5.0.10
+* Upgrade Parallels tools to 11.1.0
+* Change slugs from oel* to ol*
+
 ## 3.0.3 (2015-11-03)
 
 * Upgrade VMware tools to 10.0.1 for VMware Fusion 8.0.2
