@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.5 (2015-12-05)
+
+* Add OracleLinux 7.2 templates
+* Upgrade Parallels tools to 11.1.1
+
 ## 3.0.4 (2015-11-25)
 
 * Upgrade VirtualBox guest additions to version 5.0.10
