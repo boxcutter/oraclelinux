@@ -9,9 +9,14 @@ Vagrant boxes using Packer.
 
 64-bit boxes:
 
+* [Oracle Linux 7.2 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol72)
+* [Oracle Linux 7.2 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol72-desktop)
+* [Oracle Linux 7.2 Core with Docker (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol72-docker)
 * [Oracle Linux 7.1 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol71)
 * [Oracle Linux 7.1 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol71-desktop)
+* [Oracle Linux 7.2 Core with Docker (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol71-docker)
 * [Oracle Linux 7.0 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol70)
+* [Oracle Linux 7.0 Core with Docker (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol70-docker)
 * [Oracle Linux 7.0 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol70-desktop)
 * [Oracle Linux 6.7 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol67)
 * [Oracle Linux 6.7 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol67-desktop)
