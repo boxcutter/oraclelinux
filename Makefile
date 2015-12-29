@@ -15,7 +15,7 @@ else
 endif
 
 BUILDER_TYPES ?= vmware virtualbox parallels
-TEMPLATE_FILENAMES := $(filter-out oraclelinux.json,$(wildcard *.json))
+TEMPLATE_FILENAMES := $(filter-out oraclelinux.json ol510.json ol510-i386.json ol511.json ol511-i386.json,$(wildcard *.json))
 BOX_NAMES := $(basename $(TEMPLATE_FILENAMES))
 BOX_FILENAMES := $(TEMPLATE_FILENAMES:.json=$(BOX_SUFFIX))
 VMWARE_BOX_DIR ?= box/vmware
@@ -34,6 +34,18 @@ BOX_FILES := $(VMWARE_BOX_FILES) $(VIRTUALBOX_BOX_FILES) $(PARALLELS_BOX_FILES)
 
 box/vmware/%$(BOX_SUFFIX) box/virtualbox/%$(BOX_SUFFIX) box/parallels/%$(BOX_SUFFIX): %.json
 	bin/box build $<
+
+box/virtualbox/ol510$(BOX_SUFFIX): ol510.json
+	bin/box build $< virtualbox
+
+box/parallels/o510-i386$(BOX_SUFFIX): ol510-i386.json
+	bin/box build $< parallels
+
+box/virtualbox/ol511$(BOX_SUFFIX): ol511.json
+	bin/box build $< virtualbox
+
+box/parallels/o511$(BOX_SUFFIX): ol511-i386.json
+	bin/box build $< parallels
 
 .PHONY: all clean assure deliver assure_atlas assure_atlas_vmware assure_atlas_virtualbox assure_atlas_parallels
 
