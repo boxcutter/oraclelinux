@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.6 (015-12-28)
+
+* Upgrade VMware tools to 10.0.5 for VMware Fusion 8.1.0
+* Upgrade VirtualBox guest additions to 5.0.12
+
 ## 3.0.5 (2015-12-05)
 
 * Add OracleLinux 7.2 templates
