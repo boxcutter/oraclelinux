@@ -12,3 +12,4 @@ box/
 .boxtest/
 
 .DS_Store
+.bundle
