@@ -1,17 +1,21 @@
 #!/bin/bash
 
-USERNAME=vagrant
+if [ $desktop != 0 ]
+then
 
-cat /etc/redhat-release
-if grep -q -i "release 7" /etc/redhat-release ; then
+  USERNAME=vagrant
+
+  cat /etc/redhat-release
+  if grep -q -i "release 7" /etc/redhat-release ; then
     # set the graphical.target for systemd so it will run startx on boot
     ln -sf /lib/systemd/system/graphical.target /etc/systemd/system/default.target
-fi
+  fi
 
-GDM_CONFIG=/etc/gdm/custom.conf
+  GDM_CONFIG=/etc/gdm/custom.conf
 
-# Configure gdm autologin.
+  # Configure gdm autologin.
 
-if [ -f $GDM_CONFIG ]; then
+  if [ -f $GDM_CONFIG ]; then
     sed -i s/"daemon]$"/"daemon]\nAutomaticLoginEnable=true\nAutomaticLogin=vagrant"/ /etc/gdm/custom.conf
+  fi
 fi

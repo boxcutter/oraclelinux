@@ -121,10 +121,10 @@
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
       "scripts": [
         "script/fix-slow-dns.sh",
-        "script/kernel.sh",
         "script/sshd.sh",
         "script/update.sh",
         "script/vagrant.sh",
+        "script/docker.sh",
         "script/desktop.sh",
         "script/vmware.sh",
         "script/virtualbox.sh",
