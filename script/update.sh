@@ -1,9 +1,7 @@
 #!/bin/bash -eux
 
-if [ $UPDATE != 0 ]
-then
-  if [ $DOCKER != 0 ]
-  then
+if [[ $UPDATE  =~ true || $UPDATE =~ 1 || $UPDATE =~ yes ]]; then
+  if [[ $DOCKER =~ true || $DOCKER =~ 1 || $DOCKER =~ yes  ]]; then
 
     echo "==> Adding UEKR4 repo to update to 4.1 kernel for docker support"
     cat << EOF >> /etc/yum.repos.d/public-yum-ol7.repo
@@ -17,13 +15,11 @@ enabled=1
 EOF
   fi
 
-  if [[ $UPDATE  =~ true || $UPDATE =~ 1 || $UPDATE =~ yes ]]; then
-      echo "==> Applying updates"
-      yum -y update
+  echo "==> Applying updates"
+  yum -y update
 
-      # reboot
-      echo "Rebooting the machine..."
-      reboot
-      sleep 60
-  fi
+  # reboot
+  echo "Rebooting the machine..."
+  reboot
+  sleep 60
 fi

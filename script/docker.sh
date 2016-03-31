@@ -1,7 +1,6 @@
 #!/bin/bash
 
-if [ $DOCKER != 0 ]
-then
+if [[ $DOCKER =~ true || $DOCKER =~ 1 || $DOCKER =~ yes  ]]; then
   echo "==> Run the Docker installation script"
   curl -sSL https://get.docker.com | sh
 

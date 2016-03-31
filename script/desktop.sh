@@ -1,7 +1,6 @@
 #!/bin/bash
 
-if [ $desktop != 0 ]
-then
+if [[ $DESKTOP =~ true || $DESKTOP =~ 1 || $DESKTOP =~ yes  ]]; then
 
   USERNAME=vagrant
 
