@@ -10,5 +10,6 @@
   "iso_url": "http://mirrors.dotsrc.org/oracle-linux/OL7/u2/x86_64/OracleLinux-R7-U2-Server-x86_64-dvd.iso",
   "kickstart": "ks7.cfg",
   "memory": "1024",
-  "parallels_guest_os_type": "rhel7"
+  "parallels_guest_os_type": "rhel7",
+  "update": "true"
 }

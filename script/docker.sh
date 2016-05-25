@@ -1,17 +1,19 @@
 #!/bin/bash
 
-echo "==> Run the Docker installation script"
-curl -sSL https://get.docker.com | sh
+if [[ $DOCKER =~ true || $DOCKER =~ 1 || $DOCKER =~ yes  ]]; then
+  echo "==> Run the Docker installation script"
+  curl -sSL https://get.docker.com | sh
 
-echo "==> Create the docker group"
-# Add the docker group if it doesn't already exist
-groupadd docker
+  echo "==> Create the docker group"
+  # Add the docker group if it doesn't already exist
+  groupadd docker
 
-echo "==> Add the connected "${USER}" to the docker group."
-gpasswd -a ${USER} docker
-gpasswd -a ${SSH_USERNAME} docker
+  echo "==> Add the connected "${USER}" to the docker group."
+  gpasswd -a ${USER} docker
+  gpasswd -a ${SSH_USERNAME} docker
 
-echo "==> Starting docker"
-service docker start
-echo "==> Enabling docker to start on reboot"
-chkconfig docker on
+  echo "==> Starting docker"
+  service docker start
+  echo "==> Enabling docker to start on reboot"
+  chkconfig docker on
+fi
