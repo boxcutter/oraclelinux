@@ -11,31 +11,16 @@ Vagrant boxes using Packer.
 
 * [Oracle Linux 7.2 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol72)
 * [Oracle Linux 7.2 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol72-desktop)
-* [Oracle Linux 7.2 Core with Docker (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol72-docker)
-* [Oracle Linux 7.1 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol71)
-* [Oracle Linux 7.1 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol71-desktop)
-* [Oracle Linux 7.2 Core with Docker (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol71-docker)
-* [Oracle Linux 7.0 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol70)
-* [Oracle Linux 7.0 Core with Docker (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol70-docker)
-* [Oracle Linux 7.0 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol70-desktop)
+* [Oracle Linux 6.8 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol68)
+* [Oracle Linux 6.8 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol68-desktop)
 * [Oracle Linux 6.7 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol67)
 * [Oracle Linux 6.7 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol67-desktop)
-* [Oracle Linux 6.6 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol66)
-* [Oracle Linux 6.6 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol66-desktop)
-* [Oracle Linux 6.5 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol65)
-* [Oracle Linux 6.5 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol65-desktop)
-* [Oracle Linux 6.4 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol64)
 * [Oracle Linux 5.11 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol511)
-* [Oracle Linux 5.10 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol510)
 
 32-bit boxes:
 
 * [Oracle Linux 6.7 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol67-i386)
-* [Oracle Linux 6.6 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol66-i386)
-* [Oracle Linux 6.5 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol65-i386)
-* [Oracle Linux 6.4 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol64-i386)
 * [Oracle Linux 5.11 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol511-i386)
-* [Oracle Linux 5.10 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol510-i386)
 
 ## Building the Vagrant boxes with Packer
 
