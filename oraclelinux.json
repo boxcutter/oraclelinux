@@ -96,7 +96,7 @@
   "post-processors": [
     {
       "keep_input_artifact": false,
-      "output": "box/{{.Provider}}/{{user `vm_name`}}-{{user `cm`}}{{user `cm_version`}}-{{user `version`}}.box",
+      "output": "box/{{.Provider}}/{{user `vm_name`}}-{{user `version`}}.box",
       "type": "vagrant",
       "vagrantfile_template": "{{ user `vagrantfile_template` }}"
     }
@@ -104,8 +104,6 @@
   "provisioners": [
     {
       "environment_vars": [
-        "CM={{user `cm`}}",
-        "CM_VERSION={{user `cm_version`}}",
         "DESKTOP={{user `desktop`}}",
         "DOCKER={{user `docker`}}",
         "UPDATE={{user `update`}}",
@@ -129,7 +127,6 @@
         "script/vmware.sh",
         "script/virtualbox.sh",
         "script/parallels.sh",
-        "script/cmtool.sh",
         "script/motd.sh",
         "script/cleanup.sh"
       ],
@@ -137,8 +134,6 @@
     }
   ],
   "variables": {
-    "cm": "nocm",
-    "cm_version": "",
     "cpus": "1",
     "cutom_script": ".",
     "desktop": "false",

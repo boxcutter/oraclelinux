@@ -1,19 +1,5 @@
-# Possible values for CM: (nocm | chef | chefdk | salt | puppet)
-CM ?= nocm
-# Possible values for CM_VERSION: (latest | x.y.z | x.y)
-CM_VERSION ?=
-ifndef CM_VERSION
-	ifneq ($(CM),nocm)
-		CM_VERSION = latest
-	endif
-endif
 BOX_VERSION ?= $(shell cat VERSION)
-ifeq ($(CM),nocm)
-	BOX_SUFFIX := -$(CM)-$(BOX_VERSION).box
-else
-	BOX_SUFFIX := -$(CM)$(CM_VERSION)-$(BOX_VERSION).box
-endif
-
+BOX_SUFFIX := -$(BOX_VERSION).box
 BUILDER_TYPES ?= vmware virtualbox parallels
 TEMPLATE_FILENAMES := $(filter-out oraclelinux.json ol510.json ol510-i386.json ol511.json ol511-i386.json,$(wildcard *.json))
 BOX_NAMES := $(basename $(TEMPLATE_FILENAMES))
