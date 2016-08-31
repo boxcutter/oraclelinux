@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.8 (2016-08-31)
+
+* Upgrade VMware tools to 10.0.6 for VMware Fusion 8.1.1
+* Upgrade VirtualBox guest additions to 5.0.26
+* Upgrade Parallels tools to 11.2.1
 
 ## 3.0.7 (2015-12-28)
 
