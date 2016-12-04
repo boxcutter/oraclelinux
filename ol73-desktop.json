@@ -1,0 +1,15 @@
+{
+  "_comment": "Build with `packer build -var-file=ol73-desktop.json oraclelinux.json`",
+  "vm_name": "ol73-desktop",
+  "cpus": "1",
+  "desktop": "true",
+  "disk_size": "130048",
+  "iso_checksum": "130ee6cda827aa092b6eb66a145420f9801aa321",
+  "iso_checksum_type": "sha1",
+  "iso_name": "OracleLinux-R7-U3-Server-x86_64-dvd.iso",
+  "iso_url": "http://mirrors.dotsrc.org/oracle-linux/OL7/u3/x86_64/OracleLinux-R7-U3-Server-x86_64-dvd.iso",
+  "kickstart": "ks7-desktop.cfg",
+  "memory": "1024",
+  "vagrantfile_template": "tpl/vagrantfile-ol73-desktop.tpl",
+  "parallels_guest_os_type": "rhel7"
+}

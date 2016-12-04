@@ -1,0 +1,13 @@
+{
+  "_comment": "Build with `packer build -var-file=ol73.json oraclelinux.json`",
+  "vm_name": "ol73",
+  "cpus": "1",
+  "disk_size": "65536",
+  "iso_checksum": "130ee6cda827aa092b6eb66a145420f9801aa321",
+  "iso_checksum_type": "sha1",
+  "iso_name": "OracleLinux-R7-U3-Server-x86_64-dvd.iso",
+  "iso_url": "http://mirrors.dotsrc.org/oracle-linux/OL7/u3/x86_64/OracleLinux-R7-U3-Server-x86_64-dvd.iso",
+  "kickstart": "ks7.cfg",
+  "memory": "512",
+  "parallels_guest_os_type": "rhel7"
+}
