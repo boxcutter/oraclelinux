@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.0.9 (2016-12-04)
+
+* Add Oracle Linux 7.3 templates
+* Upgrade VMware tools to 10.0.10 for VMware Fusion 8.5.3
+* Upgrade VirtualBox guest additions to 5.1.10
+* Upgrade parallels tools to 12.1.1.
+
 ## 3.0.8 (2016-08-31)
 
 * Upgrade VMware tools to 10.0.6 for VMware Fusion 8.1.1
