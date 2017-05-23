@@ -170,4 +170,4 @@ is true.
 
 [SmartyStreets](http://www.smartystreets.com) is providing basebox hosting for the boxcutter project.
 
-![Powered By SmartyStreets](https://smartystreets.com/resources/images/smartystreets-flat.png)
+<img src="https://d79i1fxsrar4t.cloudfront.net/images/brand/smartystreets.65887aa3.png" width="320">
