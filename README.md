@@ -7,22 +7,7 @@ Vagrant boxes using Packer.
 
 ## Current Boxes
 
-64-bit boxes:
-
-* [Oracle Linux 7.3 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol73)
-* [Oracle Linux 7.3 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol73-desktop)
-* [Oracle Linux 7.2 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol72)
-* [Oracle Linux 7.2 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol72-desktop)
-* [Oracle Linux 6.8 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol68)
-* [Oracle Linux 6.8 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol68-desktop)
-* [Oracle Linux 6.7 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol67)
-* [Oracle Linux 6.7 Desktop (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol67-desktop)
-* [Oracle Linux 5.11 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol511)
-
-32-bit boxes:
-
-* [Oracle Linux 6.7 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol67-i386)
-* [Oracle Linux 5.11 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ol511-i386)
+We no longer provide pre-built binaries for these templates.
 
 ## Building the Vagrant boxes with Packer
 
@@ -168,6 +153,6 @@ is true.
 
 ### Acknowledgments
 
-[SmartyStreets](http://www.smartystreets.com) is providing basebox hosting for the boxcutter project.
+[SmartyStreets](http://www.smartystreets.com) provided basebox hosting for the boxcutter project since 2015 - thank you for your support!
 
 <img src="https://d79i1fxsrar4t.cloudfront.net/images/brand/smartystreets.65887aa3.png" width="320">
