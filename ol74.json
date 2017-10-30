@@ -1,0 +1,14 @@
+{
+  "_comment": "Build with `packer build -var-file=ol74.json oraclelinux.json`",
+  "headless": "true",
+  "vm_name": "ol74",
+  "cpus": "2",
+  "disk_size": "65536",
+  "iso_checksum": "f2e11a2fceba8e285490c8df7c2172336cc23eb4bab95924b98d1029dce7eb0b",
+  "iso_checksum_type": "sha256",
+  "iso_name": "OracleLinux-R7-U4-Server-x86_64-dvd.iso",
+  "iso_url": "http://mirrors.dotsrc.org/oracle-linux/OL7/u4/x86_64/OracleLinux-R7-U4-Server-x86_64-dvd.iso",
+  "kickstart": "ks7.cfg",
+  "memory": "512",
+  "parallels_guest_os_type": "rhel7"
+}
