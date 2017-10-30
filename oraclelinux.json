@@ -130,7 +130,8 @@
         "script/motd.sh",
         "script/cleanup.sh"
       ],
-      "type": "shell"
+      "type": "shell",
+      "expect_disconnect": "true"
     }
   ],
   "variables": {
@@ -165,4 +166,3 @@
     "vmware_guest_os_type": "oraclelinux-64"
   }
 }
-
