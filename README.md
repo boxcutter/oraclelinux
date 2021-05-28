@@ -2,7 +2,7 @@
 
 ### Overview
 
-This repository contains templates for Oracle Linux that can create
+This repository contains templates in JSON for Oracle Linux that can create
 Vagrant boxes using Packer.
 
 ## Current Boxes
